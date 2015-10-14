@@ -1,22 +1,5 @@
-\documentclass[notitlepage,12pt]{paper}
 
-\title{Box Counting Dimension}
-\date{October 13, 2015}
-\author{Matt McCarthy}
-
-\def\mcb{\mathcal{B}}
-\def\mcc{\mathcal{C}}
-\def\mcd{\mathcal{D}}
-\def\mcm{\mathcal{M}}
-
-\def\diam{\operatorname{diameter}}
-\def\dim{\operatorname{dim}}
-\def\diml{\underline{\dim}}
-\def\dimu{\overline{\dim}}
-
-\begin{document}
-
-\maketitle
+\chapter{Box-counting Dimension}
 
 \section{Introduction}
 
@@ -47,7 +30,7 @@ We now define the following counts
 
 \section{Box-counting Dimension}
 
-\begin{defn}
+\begin{definition}
 	We say the \textit{lower box-counting dimension} of $F\subset\RR^n$ is
 	\[
 		\diml_B(F):=\liminf\limits_{\delta\rightarrow 0} \frac{\log N^B_\delta(F)}{-\log\delta}
@@ -60,18 +43,18 @@ We now define the following counts
 	\[
 		\dim_B(F):=\lim\limits_{\delta\rightarrow 0} \frac{\log N^B_\delta(F)}{-\log\delta}.
 	\]
-\end{defn}
+\end{definition}
 
 \begin{thm}
 	$N^C_\delta(F)$ yields the same box-counting dimension as $N^D_\delta(F)$.
 \end{thm}
 \begin{proof}
-	The details are trivial and left as an excercise.
+	The details are trivial and left as an exercise.
 \end{proof}
 
 \section{Examples}
 
-\begin{lem}
+\begin{lemma}
 	Let $\set{x_n}_{n=1}^\infty$, be a monotone decreasing sequence in $[0,1]$ that tends to 0 and let $0 < \delta < 1/2$.
 	Let $S=\set{x_n}_{n=1}^\infty\cup\set{0}$.
 	Define
@@ -83,7 +66,7 @@ We now define the following counts
 	\[
 		k \leq N^C_\delta(S)\leq 2k.
 	\]
-\end{lem}
+\end{lemma}
 \begin{proof}
 	The proof is obvious and thus is omitted here.
 \end{proof}
@@ -108,6 +91,10 @@ We now define the following counts
 	Assume the result.
 \end{proof}
 
-\section*{References}
+\begin{example}
+	Let $C$ denote the middle-third Cantor set.
+	\[
+		\dim_B(C)=\frac{\ln2}{\ln3}
+	\]
+\end{example}
 
-\end{document}
