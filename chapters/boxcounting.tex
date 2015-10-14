@@ -1,0 +1,113 @@
+\documentclass[notitlepage,12pt]{paper}
+
+\title{Box Counting Dimension}
+\date{October 13, 2015}
+\author{Matt McCarthy}
+
+\def\mcb{\mathcal{B}}
+\def\mcc{\mathcal{C}}
+\def\mcd{\mathcal{D}}
+\def\mcm{\mathcal{M}}
+
+\def\diam{\operatorname{diameter}}
+\def\dim{\operatorname{dim}}
+\def\diml{\underline{\dim}}
+\def\dimu{\overline{\dim}}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\section{Covers}
+
+Let $F$ be a subset of $\RR^n$.
+We define the following covers:
+\begin{align*}
+	\mcb_\delta(F)&:=\set{B(x_1,\delta),B(x_2,\delta),\ldots,B(x_{n_1},\delta)| F\subseteq \cup_{j=1}^{n_1} B(x_j,\delta)}\\
+	\mcc_\delta(F)&:=\set{\bar{B}(x_1,\delta),\bar{B}(x_1,\delta),\ldots,\bar{B}(x_{n_2},\delta)| F\subseteq \cup_{j=1}^{n_2} \bar{B}(x_j,\delta)}\\
+	\mcd_\delta(F)&:=\set{D_1,D_2,\ldots, D_{n_3}| F\subseteq \cup_{j=1}^{n_3} D_j \,\,\wedge\,\, \diam(D_j)\leq\delta\,\, \forall\,\, 1\leq j\leq n_3}.
+\end{align*}
+We now define the following counts
+\begin{align*}
+	N^B_\delta(F)&:=\min\limits_{\mcb_\delta(F)}|\mcb_\delta(F)|\\
+	N^C_\delta(F)&:=\min\limits_{\mcc_\delta(F)}|\mcc_\delta(F)|\\
+	N^D_\delta(F)&:=\min\limits_{\mcd_\delta(F)}|\mcd_\delta(F)|.
+\end{align*}
+
+\begin{thm}
+	\[
+		N^B_\delta(F)=N^D_\delta(F)
+	\]
+\end{thm}
+\begin{proof}
+	The proof is trivial and left as an excercise.
+\end{proof}
+
+\section{Box-counting Dimension}
+
+\begin{defn}
+	We say the \textit{lower box-counting dimension} of $F\subset\RR^n$ is
+	\[
+		\diml_B(F):=\liminf\limits_{\delta\rightarrow 0} \frac{\log N^B_\delta(F)}{-\log\delta}
+	\]
+	and the \textit{upper box-counting dimension} is
+	\[
+		\dimu_B(F):=\limsup\limits_{\delta\rightarrow 0} \frac{\log N^B_\delta(F)}{-\log\delta}.
+	\]
+	If $\diml_B(F)=\dimu_B(F)$, then we say the \textit{box-counting dimension} of $F$ is
+	\[
+		\dim_B(F):=\lim\limits_{\delta\rightarrow 0} \frac{\log N^B_\delta(F)}{-\log\delta}.
+	\]
+\end{defn}
+
+\begin{thm}
+	$N^C_\delta(F)$ yields the same box-counting dimension as $N^D_\delta(F)$.
+\end{thm}
+\begin{proof}
+	The details are trivial and left as an excercise.
+\end{proof}
+
+\section{Examples}
+
+\begin{lem}
+	Let $\set{x_n}_{n=1}^\infty$, be a monotone decreasing sequence in $[0,1]$ that tends to 0 and let $0 < \delta < 1/2$.
+	Let $S=\set{x_n}_{n=1}^\infty\cup\set{0}$.
+	Define
+	\begin{align*}
+		l_S(n)&:= x_n-x_{n+1}\\
+		r_S(n)&:= x_{n-1}-x_n.
+	\end{align*}
+	Let $k\in\NN$ such that $l_S(k)\leq \delta < r_S(k)$, then
+	\[
+		k \leq N^C_\delta(S)\leq 2k.
+	\]
+\end{lem}
+\begin{proof}
+	The proof is obvious and thus is omitted here.
+\end{proof}
+
+\begin{example}
+	Let $j\in\QQ^+$, then the box-counting dimension of $S_j=\set{n^{-j}}_{n=1}^\infty\cup\set{0}$ is
+	\[
+		\dim_B(S_j)=\frac{1}{j+1}.
+	\]
+\end{example}
+\begin{proof}
+	Proceed via proof by beer.
+\end{proof}
+
+\begin{example}
+	Let $S=\set{(n!)^{-1}}_{n=1}^\infty\cup\set{0}$, then
+	\[
+		\dim_B(S)=0.
+	\]
+\end{example}
+\begin{proof}
+	Assume the result.
+\end{proof}
+
+\section*{References}
+
+\end{document}
