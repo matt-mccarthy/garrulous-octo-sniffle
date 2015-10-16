@@ -8,15 +8,15 @@
 Let $F$ be a subset of $\RR^n$.
 We define the following covers:
 \begin{align*}
-	\mcb_\delta(F)&:=\set{B(x_1,\delta),B(x_2,\delta),\ldots,B(x_{n_1},\delta)| F\subseteq \cup_{j=1}^{n_1} B(x_j,\delta)}\\
-	\mcc_\delta(F)&:=\set{\bar{B}(x_1,\delta),\bar{B}(x_1,\delta),\ldots,\bar{B}(x_{n_2},\delta)| F\subseteq \cup_{j=1}^{n_2} \bar{B}(x_j,\delta)}\\
-	\mcd_\delta(F)&:=\set{D_1,D_2,\ldots, D_{n_3}| F\subseteq \cup_{j=1}^{n_3} D_j \,\,\wedge\,\, \diam(D_j)\leq\delta\,\, \forall\,\, 1\leq j\leq n_3}.
+	\mcb_\delta(F)&:=\set{B=\set{B(x_j,\delta)}_{j=1}^{n_B}| F\subseteq \cup B}\\
+	\mcc_\delta(F)&:=\set{C=\set{\bar{B}(x_j,\delta)}_{j=1}^{n_C} F\subseteq \cup C}\\
+	\mcd_\delta(F)&:=\set{D=\set{D_j}_{j=1}^{n_D}| F\subseteq \cup D \,\,\wedge\,\, \diam(D_j)\leq\delta\,\, \forall\,\, D_j\in D}.
 \end{align*}
 We now define the following counts
 \begin{align*}
-	N^B_\delta(F)&:=\min\limits_{\mcb_\delta(F)}|\mcb_\delta(F)|\\
-	N^C_\delta(F)&:=\min\limits_{\mcc_\delta(F)}|\mcc_\delta(F)|\\
-	N^D_\delta(F)&:=\min\limits_{\mcd_\delta(F)}|\mcd_\delta(F)|.
+	N^B_\delta(F)&:=\min\limits_{B\in\mcb_\delta(F)}|B|\\
+	N^C_\delta(F)&:=\min\limits_{C\in\mcc_\delta(F)}|C|\\
+	N^D_\delta(F)&:=\min\limits_{D\in\mcd_\delta(F)}|D|.
 \end{align*}
 
 \begin{thm}
@@ -101,4 +101,7 @@ We now define the following counts
 		\dim_B(C)=\frac{\ln2}{\ln3}
 	\]
 \end{example}
+\begin{proof}
+	The Cantor set is wierd.
+\end{proof}
 
