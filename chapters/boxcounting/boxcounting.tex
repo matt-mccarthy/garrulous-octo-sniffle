@@ -54,7 +54,7 @@ We now define the following counts
 
 \section{Examples}
 
-\begin{lemma}
+\begin{lemma}\label{lems}
 	Let $\set{x_n}_{n=1}^\infty$, be a monotone decreasing sequence in $[0,1]$ that tends to 0 and let $0 < \delta < 1/2$.
 	Let $S=\set{x_n}_{n=1}^\infty\cup\set{0}$.
 	Define
@@ -68,7 +68,7 @@ We now define the following counts
 	\]
 	and
 	\[
-		\frac{\ln k}{-\ln r_s(k)}\leq \frac{\ln N^C_\delta}{-\ln\delta}\leq\frac{\ln (2k)}{-\ln l_s(k)}.
+		\frac{\ln k}{-\ln r_S(k)}\leq \frac{\ln N^C_\delta}{-\ln\delta}\leq\frac{\ln (2k)}{-\ln l_S(k)}.
 	\]
 \end{lemma}
 \begin{proof}
@@ -82,7 +82,45 @@ We now define the following counts
 	\]
 \end{example}
 \begin{proof}
-	Proceed via proof by beer.
+	From the construction of $S_j$ we know that
+	\[
+		l_{S_j}(k) = \frac{1}{k^j}-\frac{1}{(k+1)^j} = \frac{(k+1)^j-k^j}{k^j(k+1)^j}
+	\]
+	and
+	\[
+		r_{S_j}(k) = \frac{1}{(k-1)^j}-\frac{1}{k^j} = \frac{k^j-(k-1)^j}{k^j(k-1)^j}.
+	\]
+	By Lemma\autoref{lems}, we know that
+	\[
+		\frac{\ln k}{-\ln r_{S_j}(k)}\leq \frac{\ln N^C_\delta}{-\ln\delta}\leq\frac{\ln (2k)}{-\ln l_{S_j}(k)}.
+	\]
+	Thus, the box-counting dimension is in between the limits of the far left and far right of this inequality.
+	Consider $\ln k/(-\ln r_{S_j}(k))$.
+	\[
+		\frac{\ln k}{-\ln r_{S_j}(k)}=\frac{\ln k}{-\ln (k^j-(k-1)^j)+j\ln k +j\ln(k+1)}
+	\]
+	Consider $n^j-(n-1)^j$.
+	\[
+		n^j-(n-1)^j=n^{j-1}\paren{ n - (n-1)\paren{\frac{n-1}{n}}^{j-1} }=n^{j-1}\paren{ n - (n-1)\paren{1-\frac{1}{n}}^{j-1} }
+	\]
+	Thus,
+	\[
+		\frac{\ln k}{-\ln r_{S_j}(k)}=\frac{\ln k}{-\ln(k-(k-1)(1-1/k)^{j-1})+\ln k +j\ln(k+1)}
+	\]
+	which tends to $1/(j+1)$.
+	Consider $\ln 2k/(-\ln l_{S_j}(k))$.
+	\[
+		\frac{\ln 2k}{-\ln l_{S_j}(k)}=\frac{\ln 2k}{-\ln ((k+1)^j-k^j)+j\ln k +j\ln(k-1)}
+	\]
+	Consider $(n+1)^j-n^j$.
+	\[
+		(n+1)^j-n^j=n^{j-1}\paren{ (n+1)\paren{\frac{n+1}{n}}^{j-1} - n }=n^{j-1}\paren{ (n+1)\paren{1+\frac{1}{n}}^{j-1} - n }
+	\]
+	Thus,
+	\[
+		\frac{\ln 2 +\ln k}{-\ln l_{S_j}(k)}=\frac{\ln 2+\ln k}{-\ln((k+1)(1+1/k)^{j-1}-k)+\ln k +j\ln(k+1)}
+	\]
+	which tends to $1/(j+1)$ and by Squeeze theorem, $\dim_B(S_j)$ is $1/(j+1)$.
 \end{proof}
 
 \begin{example}
@@ -92,7 +130,16 @@ We now define the following counts
 	\]
 \end{example}
 \begin{proof}
-	Assume the result.
+	We begin by computing $l_S(n)$ and $r_S(n)$.
+	\begin{align*}
+		l_S(n) &= \frac{n}{(n+1)!}\\
+		r_S(n) &= \frac{n-1}{n!}
+	\end{align*}
+	We then invoke Lemma\autoref{lems} to get
+	\[
+		\frac{\ln k}{-\ln (k-1)+\ln(k!)} \leq \frac{\ln N^C_\delta(S)}{-\ln\delta} \leq \frac{\ln 2+\ln k}{-\ln k +\ln ((k+1)!)}.
+	\]
+	Since the limit of both the far right and the far left of the previous inequality is zero, $\dim_B(S)=0$.
 \end{proof}
 
 \begin{example}
