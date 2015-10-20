@@ -52,6 +52,56 @@ We now define the following counts
 	The details are trivial and left as an exercise.
 \end{proof}
 
+\begin{thm}
+	Let $f:\RR^n\rightarrow\RR^n$ be Lipschitz on $F\subset\RR^n$.
+	Then $\diml_B(f(F))\leq\diml_B(F)$ and $\dimu_B(f(F))\leq\dimu_B(F)$.
+	If $f$ is bi-Lipschitz on $F$, then $\diml_B(f(F))=\diml_B(F)$ and $\dimu_B(f(F))=\dimu_B(F)$.
+\end{thm}
+\begin{proof}
+	Let $\delta > 0$ be given.
+	Let $\set{U_i}_{i=1}^k$ be a minimal $\delta$-cover of $F$.
+	Thus, $\set{U_i\cap F}$ is also a minimal $\delta$-cover of $F$.
+	Note that for all $x,y\in U_i\cap F$, $|x-y|\leq \delta$.
+	We also know that $\set{f(U_i\cap F)}$ is a $c\delta$-cover since $|f(x)-f(y)|\leq c|x-y|\leq c\delta$.
+	However, this cover is not necessarily minimal and thus
+	\[
+		N_{c\delta}(f(F))\leq N_\delta(F).
+	\]
+	Ergo,
+	\[
+		\frac{\ln N_{c\delta}(f(F))}{-\ln(c\delta)+\ln\delta}\leq\frac{\ln N_\delta(F)}{-\ln\delta}
+	\]
+	and $\diml_B(f(F))\leq\diml_B(F)$ and $\dimu_B(f(F))\leq\dimu_B(F)$.
+	
+	If $f$ is bi-Lipschitz, then $f^{-1}$ is Lipschitz on $f^{-1}(F)$.
+	Thus $\diml_B(f^{-1}(f(F)))\leq\diml_B(f(F))$ and $\dimu_B(f^{-1}(f(F)))\leq\dimu_B(f(F))$.
+	Therefore, $\diml_B(f(F))=\diml_B(F)$ and $\dimu_B(f(F))=\dimu_B(F)$.
+\end{proof}
+
+\begin{thm}
+	Suppose $f$ satisfies the H\"{o}lder condition, that is for some $c,\alpha>0$
+	\[
+		|f(x)-f(y)|\leq c|x-y|^\alpha.
+	\]
+	Then $\diml_B(f(F))\leq(1/\alpha)\diml_B(F)$ and $\dimu_B(f(F))\leq(1/\alpha)\dimu_B(F)$.
+\end{thm}
+\begin{proof}
+	Let $\delta > 0$ be given.
+	Let $\set{U_i}_{i=1}^k$ be a minimal $\delta$-cover of $F$.
+	Thus, $\set{U_i\cap F}$ is also a minimal $\delta$-cover of $F$.
+	Note that for all $x,y\in U_i\cap F$, $|x-y|\leq \delta$.
+	We also know that $\set{f(U_i\cap F)}$ is a $c\delta^\alpha$-cover since $|f(x)-f(y)|\leq c|x-y|^\alpha\leq c\delta^\alpha$.
+	However, this cover is not necessarily minimal and thus
+	\[
+		N_{c\delta^\alpha}(f(F))\leq N_\delta(F).
+	\]
+	Ergo,
+	\[
+		\frac{\ln N_{c\delta^\alpha}(f(F))}{-\ln(c\delta^\alpha)+\ln\delta}\leq\frac{\ln N_\delta(F)}{-\alpha\ln\delta}
+	\]
+	and $\diml_B(f(F))\leq(1/\alpha)\diml_B(F)$ and $\dimu_B(f(F))\leq(1/\alpha)\dimu_B(F)$.
+\end{proof}
+
 \section{Examples}
 
 \begin{lemma}\label{lems}
@@ -76,7 +126,7 @@ We now define the following counts
 \end{proof}
 
 \begin{example}
-	Let $j\in\QQ^+$, then the box-counting dimension of $S_j=\set{n^{-j}}_{n=1}^\infty\cup\set{0}$ is
+	Let $j\in\RR^+$, then the box-counting dimension of $S_j=\set{n^{-j}}_{n=1}^\infty\cup\set{0}$ is
 	\[
 		\dim_B(S_j)=\frac{1}{j+1}.
 	\]
