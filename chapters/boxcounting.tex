@@ -8,15 +8,13 @@
 Let $F$ be a subset of $\RR^n$.
 We define the following covers:
 \begin{align*}
-	\mcb_\delta(F)&:=\set{B=\set{B(x_j,\delta)}_{j=1}^{n_B}| F\subseteq \cup B}\\
-	\mcc_\delta(F)&:=\set{C=\set{\bar{B}(x_j,\delta)}_{j=1}^{n_C} F\subseteq \cup C}\\
+	\mcb_\delta(F)&:=\set{B=\set{B(x_j,\delta/2)}_{j=1}^{n_B}| F\subseteq \cup B}\\
 	\mcd_\delta(F)&:=\set{D=\set{D_j}_{j=1}^{n_D}| F\subseteq \cup D \,\,\wedge\,\, \diam(D_j)\leq\delta\,\, \forall\,\, D_j\in D}.
 \end{align*}
 We now define the following counts
 \begin{align*}
-	N^B_\delta(F)&:=\min\limits_{B\in\mcb_\delta(F)}|B|\\
-	N^C_\delta(F)&:=\min\limits_{C\in\mcc_\delta(F)}|C|\\
-	N^D_\delta(F)&:=\min\limits_{D\in\mcd_\delta(F)}|D|.
+	N^B_\delta(F)&:=\min\limits_{B\in\mcb_\delta(F)}\card(B)\\
+	N^D_\delta(F)&:=\min\limits_{D\in\mcd_\delta(F)}\card(D).
 \end{align*}
 
 \begin{thm}
@@ -25,7 +23,12 @@ We now define the following counts
 	\]
 \end{thm}
 \begin{proof}
-	The proof is trivial and left as an excercise.
+	Let $B$ be a cover in $\mcb_\delta(F)$ such that $\card(B)=N^B_\delta(F)$.
+	Likewise let $D$ be a cover in $\mcd_\delta(F)$ such that $\card(D)=N^D_\delta(F)$.
+	Since each set in $B$ has diameter $\delta$ $B\in\mcd_\delta(F)$, and by minimality, $N^D_\delta(F)\leq N^B_\delta(F)$.
+	Since each set in $D$ has diameter no more than $\delta$, we can encapsulate each set in $D$ with a single ball of radius $\delta/2$, call this new cover $B(D)$.
+	By construction, $D(B)\in\mcb_\delta(F)$ and $\card(D(B))=N^D_\delta(F)$.
+	Again, by minimality, $N^B_\delta(F)\leq N^D_\delta(F)$ and $N^B_\delta(F) = N^D_\delta(F)$.
 \end{proof}
 
 \section{Box-counting Dimension}
@@ -44,13 +47,6 @@ We now define the following counts
 		\dim_B(F):=\lim\limits_{\delta\rightarrow 0} \frac{\log N^B_\delta(F)}{-\log\delta}.
 	\]
 \end{definition}
-
-\begin{thm}
-	$N^C_\delta(F)$ yields the same box-counting dimension as $N^D_\delta(F)$.
-\end{thm}
-\begin{proof}
-	The details are trivial and left as an exercise.
-\end{proof}
 
 \begin{thm}
 	Let $f:\RR^n\rightarrow\RR^n$ be Lipschitz on $F\subset\RR^n$.
@@ -104,6 +100,100 @@ We now define the following counts
 
 \section{Examples}
 
+\begin{example}
+	Let $C$ denote the middle-$\lambda$ Cantor set for $0<\lambda < 1$.
+	\[
+		\dim_B(C)=\frac{\ln2}{\ln\paren{\frac{2}{1-\lambda}}}
+	\]
+\end{example}
+\begin{proof}
+	To begin, we must determine the length of each interval of $C_n$ after we remove the middle $1/\lambda$ from each of them.
+	Assume we are removing the middle $\lambda$ of the interval $[0,a]$ where $a$ is a positive real number.
+	Since we removed $a\lambda$ from $[0,a]$, we have exactly $a-a\lambda=a(1-\lambda)$ length remaining.
+	Since we removed the middle $a/\lambda$, we equally distribute the remaining length into two subintervals of length $a(1-\lambda)/2$.
+	
+	Let $l_n$ represent the length of each interval in $C_n$ and define $l_0=1$.
+	Thus, $l_1=(1-\lambda)/2$ and $l_{n+1}=l_n(1-\lambda)/2$ by our previous derivation.
+	Solving this recursion yields $l_n=[(1-\lambda)/2]^n$.
+	
+	Let $\delta>0$ be given.
+	Choose $n$ such that $l_{n+1}\leq\delta< l_n$.
+	Since $\delta \geq l_{n+1}$, we need no more $2^{n+1}$ sets of diameter $\delta$ to cover $C$ because there are exactly $2^{n+1}$ intervals of length $l_{n+1}$ in $C_{n+1}$.
+	Furthermore, since $\delta < l_n$, we need at least $2^n$ sets of diameter $\delta$ to cover $C$ becayse there are exactly $2^n$ intervals of length $l_n$ is $C_n$.
+	Thus yielding the inequality
+	\[
+	2^n \leq N^D_\delta(C) \leq 2^{n+1}.
+	\]
+	Taking logs and doing some manipulation yields
+	\[
+		\frac{n\ln2}{(n+1)\ln \paren{\frac{2}{1-\lambda}}}\leq\frac{\ln N^D_\delta(C)}{-\ln\delta}\leq\frac{(n+1)\ln2}{n\ln \paren{\frac{2}{1-\lambda}}}.
+	\]
+	Using L'H\^{o}pital's rule yields
+	\[
+		\dim_B(C)=\frac{\ln2}{\ln\paren{\frac{2}{1-\lambda}}}.
+	\]
+\end{proof}
+
+\begin{example}
+	Let $F$ be the set containing all numbers in $[0,1]$ that do not have a 5 in their decimal expansion.
+	Then,
+	\[
+		\dim_B(F)=\frac{\ln9}{\ln10}.
+	\]
+\end{example}
+
+\begin{proof}
+	We perform a similar construction to the middle-$\lambda$ Cantor set.
+	Define $F_n=[0,10^{-n}]$ where $n$ is a non-negative integer.
+	In our construction, we will spilt $F_n$ into ten intervals of length $10^{n+1}$ and remove the interval $(5\cdot10^{n+1},6\cdot10^{n+1})$, removing any number with a 5 in the $n+1$st decimal place from $F_n$.
+	We now have nine subintervals left, all of which are copies of $F_{n+1}$.
+	This construction means that we have $9^n$ copies of $F_n$ for each $n$.
+	
+	Let $\delta >0$ be given.
+	Choose $n$ such that $10^{-(n+1)}\leq \delta<10^{-n}$.
+	Since $\delta\geq 10^{-(n+1)}$, we need no more than $9^{n+1}$ sets of diameter $\delta$ to cover $F$.
+	Since $\delta<10^{-n}$, we need at least $9^n$ sets of diameter $\delta$ to cover $F$.
+	Thus we have the following inequality
+	\[
+		9^n \leq N^D_\delta(F)\leq 9^{n+1}.
+	\]
+	By taking logs and manipulating the inequality we get,
+	\[
+		\frac{n\ln 9}{(n+1)\ln 10}\leq\frac{\ln N^D_\delta(F)}{-\ln\delta}\leq \frac{(n+1)\ln9}{n\ln 10}.
+	\]
+	Since both the far left and far right tend to $\frac{\ln9}{\ln10}$, by Squeeze theorem, we have
+	\[
+		\dim_B(F)=\frac{\ln9}{\ln10}.
+	\]
+\end{proof}
+
+\begin{example}
+	The Cantor Dust has $\dim_B=1$.
+\end{example}
+
+\begin{proof}
+	To construct the Cantor Dust, we consider the unit square, call this $C_0$.
+	Then subdivide $C_0$ into 16 more squares and keep precisely 4 of them, call them copies of $C_1$.
+	We iterate this process by splitting $C_n$ into 16 squares and keeping 4 of them, while calling each one $C_{n+1}$.
+	We should note that the side length of all of the $4^n$ copies of $C_n$ is $(1/4)^n$.
+
+	Let $\delta>0$ be given.
+	We begin by selecting an $n$ such that $(1/4)^{n+1}\leq \delta< (1/4)^n$.
+	Thus we need no more than $4^{n+1}$ squares of side length $\delta$ and no fewer than $4^n$ squares of side length $\delta$ to cover $C$.
+	However, since this is a cover of squares of side length $\delta$, we have a cover using balls of diameter $\sqrt{2}\delta$, by Pythagorean theorem.
+	Thus yielding the following inequality
+	\[
+		4^{n+1}\leq N^D_{\sqrt{2}\delta}\leq 4^n.
+	\]
+	After taking logs and some algebraic manipulation, we have
+	\[
+		\frac{(n+1)\ln4}{n\ln4}\leq \frac{\ln N^D_{\sqrt{2}\delta}}{-\ln\delta}\leq \frac{n\ln4}{(n+1)\ln4}.
+	\]
+	After we take the limit of both sides we get, $\dim_B(C)=1$.
+\end{proof}
+
+However, while the Box-counting dimension is nice for our Cantor-like sets, it has a certain undesirable property, that is countable sets can have non-zero dimension.
+
 \begin{lemma}\label{lems}
 	Let $\set{x_n}_{n=1}^\infty$, be a monotone decreasing sequence in $[0,1]$ that tends to 0 and let $0 < \delta < 1/2$.
 	Let $S=\set{x_n}_{n=1}^\infty\cup\set{0}$.
@@ -114,7 +204,7 @@ We now define the following counts
 	\end{align*}
 	Let $k\in\NN$ such that $l_S(k)\leq \delta < r_S(k)$, then
 	\[
-		k \leq N^C_\delta(S)\leq 2k.
+		k \leq N^D_\delta(S)\leq 2k.
 	\]
 	and
 	\[
@@ -122,7 +212,10 @@ We now define the following counts
 	\]
 \end{lemma}
 \begin{proof}
-	The proof is obvious and thus is omitted here.
+	If we cover using sets of diameter $r_S(k)$, then we can fit at most one point from $\set{x_j}_{j=1}^k$ in each set.
+	Thus implying that $k\leq N^D_\delta(F)$.
+	If we cover using sets of diameter $l_S(k)$, then we can cover $[0,x_k]$ with at most, $k+1$ sets and $\set{x_j}_{j=1}^{k-1}$ with $k-1$ sets.
+	Thus implying that $k\leq N^D_\delta(F)\leq 2k$, and the logarithm inequality directly follows.
 \end{proof}
 
 \begin{example}
@@ -190,15 +283,5 @@ We now define the following counts
 		\frac{\ln k}{-\ln (k-1)+\ln(k!)} \leq \frac{\ln N^C_\delta(S)}{-\ln\delta} \leq \frac{\ln 2+\ln k}{-\ln k +\ln ((k+1)!)}.
 	\]
 	Since the limit of both the far right and the far left of the previous inequality is zero, $\dim_B(S)=0$.
-\end{proof}
-
-\begin{example}
-	Let $C$ denote the middle-third Cantor set.
-	\[
-		\dim_B(C)=\frac{\ln2}{\ln3}
-	\]
-\end{example}
-\begin{proof}
-	The Cantor set is wierd.
 \end{proof}
 
