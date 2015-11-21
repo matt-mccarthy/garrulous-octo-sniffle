@@ -1,0 +1,538 @@
+
+\chapter*{Appendix A: Definitions}
+
+\section*{Set Theory}
+
+\begin{definition*}
+	A \textit{relation} is a set of ordered pairs.
+\end{definition*}
+
+\begin{definition*}
+	Let $A$ and $B$ be nonempty sets and let $f$ be a relation between them. 
+	Then $f$ is a \textit{function} if and only if for $(x,y),(x,z)\in f$ then $y=z$.
+\end{definition*}
+\begin{example*}
+	Let $A$ be a nonempty set. 
+	Then the identity map on $A$, $id_A(x)=x$, is a function.
+	On $\RR$, $\sin x$, and $\cos x$ are functions.
+\end{example*}
+
+\begin{definition*}
+	Let $f:A\rightarrow B$ be a function.
+	Then:
+	\begin{itemize}
+		\item $f$ is \textit{injective} if and only if for all $a_1,a_2\in A$, $f(a_1)=f(a_2)$ implies $a_1=a_2$, moreover $f$ is called an \textit{injection};
+		\item $f$ is \textit{surjective} if and only if for all $b\in B$ there exists an $a\in A$ such that $b=f(a)$, moreover $f$ is called a \textit{surjection};
+		\item $f$ is \textit{bijective} if and only if $f$ is injective and surjective, moreover $f$ is called a \textit{bijection}.
+	\end{itemize}
+\end{definition*}
+\begin{example*}
+	The map $f:\RR\rightarrow[-1,1]$ defined by $f(x)=\sin x$ is surjective, but not injective.
+	The map $g:\NN\rightarrow\RR$ defined by $g(x)=x$ is injective, but not surjective.
+	The map $h:\RR\rightarrow\RR$ defined by $h(x)=x$ is bijective.
+\end{example*}
+
+\begin{definition*}
+	A nonempty set $A$ is \textit{finite} if and only if there exists an $n\in\NN$ such that there exists a bijection between $A$ and ${1,2,\ldots, n}$.
+\end{definition*}
+\begin{example*}
+	$\ZZ_7$ is finite since the map $f:\set{1,2,\ldots, 7}\rightarrow \ZZ_7$ defined by $f(n)=\overline{n-1}$ is a bijection.
+\end{example*}
+
+\begin{definition*}
+	A nonempty set $A$ is \textit{infinite} if and only if $A$ is not finite.
+\end{definition*}
+\begin{example*}
+	$\NN$ is infinite.
+\end{example*}
+
+\begin{definition*}
+	A nonempty set $A$ is \textit{countably infinite} if and only if there exists a bijection between $A$ and $\NN$.
+\end{definition*}
+\begin{example*}
+	$\ZZ$ is countably infinite since the map $f:\NN\rightarrow\ZZ$ given by $f(n)=(-1)^n\floor{n/2}$ is a bijection.
+\end{example*}
+
+\begin{definition*}
+	A nonempty set $A$ is \textit{countable} if and only if $A$ is finite or countably infinite.
+\end{definition*}
+\begin{example*}
+	The sets, $\NN,\ZZ,\QQ,\AA,$ and $\ZZ_n$ are countable.
+\end{example*}
+
+\begin{definition*}
+	A nonempty set $A$ is \textit{uncountable} if and only if $|A|>\aleph_0$.
+\end{definition*}
+\begin{example*}
+	The sets $\RR,\CC,\HH$ are uncountable.
+\end{example*}
+
+\begin{definition*}
+	A \textit{poset} is a nonempty set $A$ with ordering $\preceq$ satisfying the following for all $a,b,c\in A$:
+	\begin{itemize}
+		\item $a\preceq a$;
+		\item $a\preceq b$ and $b\preceq a$ implies that $a=b$;
+		\item $a\preceq b$ and $b\preceq c$ implies that $a\preceq c$.
+	\end{itemize}
+\end{definition*}
+\begin{example*}
+	Let $A$ be a nonempty set.
+	Then, $\mathcal{P}(A)$ with the ordering $\subseteq$ is a poset.
+\end{example*}
+
+\begin{definition*}
+	A poset $(A,\preceq)$ is \textit{totally ordered} if and only if for all $a,b\in A$, $a\preceq b$ or $b\preceq a$.
+\end{definition*}
+\begin{example*}
+	$(\RR, \leq)$ is a totally ordered set.
+\end{example*}
+
+\begin{definition*}
+	Let $(S,\leq)$ be a totally ordered set and let $A\subseteq S$.
+	We say that $A$ is \textit{bounded above} if and only if there exists a $s\in S$ such that for all $a\in A$, $a\leq s$; we say that $s$ is an upper bound of $A$.
+	We say that $A$ is \textit{bounded below} if and only if there exists a $r\in S$ such that for all $a\in A$, $r\leq a$; we say that $r$ is a lower bound of $A$.
+\end{definition*}
+\begin{example*}
+	$\NN$ is bounded below by $0$.
+	$\set{1,2,\ldots n}$ is bounded below by $1$ and bounded above by $n$.
+\end{example*}
+
+\begin{definition*}
+	Let $(S,\leq)$ be a totally ordered set and let $A\subseteq S$ be bounded above.
+	Then the \textit{supremum} of $A$, denoted $\sup A$, is an upper bound of $A$, $\alpha$, with the property that if $\beta$ is also an upper bound of $A$ then $\alpha\leq\beta$.
+\end{definition*}
+\begin{example*}
+	The supremem of $(-1,1)$ is $1$ and the supremum of $(-\pi, \pi]$ is $\pi$.
+\end{example*}
+
+\begin{definition*}
+	Let $(S,\leq)$ be a totally ordered set and let $A\subseteq S$ be bounded below.
+	Then the \textit{infinimum} of $A$, denoted $\inf A$, is a lower bound of $A$, $\zeta$, with the property that if $\eta$ is also a lower bound of $A$ then $\eta\leq\zeta$.
+\end{definition*}
+\begin{example*}
+	The infinimum of $(-1,1)$ is $-1$ and the infinimum of $[-\pi, \pi)$ is $-\pi$.
+\end{example*}
+
+
+\pagebreak
+
+
+\section*{Topological Spaces}
+
+
+\begin{definition*}
+	Let $X$ be a nonempty set and let $\tau$ be a collection of subsets of $X$.
+	Then $\tau$ is called a \textit{topology} on $X$ if and only if $\tau$ satisfies all of the following:
+	\begin{itemize}
+		\item $X\in\tau$ and $\emptyset\in\tau$;
+		\item if $U,V\in\tau$, then $U\cap V\in\tau$;
+		\item if $\set{U_i}_{i\in I}\subseteq\tau$ then $\cup_{i\in I} U_i\in\tau$.
+	\end{itemize}
+	We say that $(X,\tau)$ form a \textit{topological space}.
+	Furthermore, any set in $\tau$ is called \textit{open} and for any $x\in X$ a set containing $x$ is called a \textit{neighborhood} of $x$.
+	Moreover, a set $A\subseteq X$ is said to be \textit{closed} if and only if $(X\setminus A)\in\tau$.
+\end{definition*}
+\begin{example*}
+	Let $A$ be a nonempty set, then $(A,\mathcal{P}(A))$ forms a topology.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau)$ be a topological space and let $A\subseteq X$.
+	Then the \textit{interior} of $A$ is defined as
+	\[
+	A^o=\set{x\in A|\exists V\in\tau \text{ s.t. }(x\in V)\wedge (V\subseteq A)}. 
+	\]
+\end{definition*}
+\begin{example*}
+	In $\RR$, the interior of $\QQ$ is the empty set under the usual metric topology.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau)$ be a topological space and let $A\subseteq X$.
+	A point $x\in X$ is called an \textit{accumulation point} of $A$ if and only if for all neighborhoods of $x$, $V$, $(V\cap A)\setminus{x}\neq\emptyset$.
+\end{definition*}
+\begin{example*}
+	$0$ is an accumulation point of $(0,1)$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau)$ be a topological space and let $A\subseteq X$.
+	Then the \textit{closure} of $A$, denoted $\bar{A}$, is the set $A$ together with all of its accumulation points.
+\end{definition*}
+\begin{example*}
+	The closure of $(0,1)$ is $[0,1]$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau)$ be a topological space and let $A\subseteq X$.
+	A sequence $\set{x_n}_{n\in\NN}\subseteq X$ \textit{coverges} to $x\in X$ if and only if for all neighborhoods of $U$ of $x$, there exists an $N\in\NN$ such that $x_n\in U$ for all $n\geq N$. 
+\end{definition*}
+\begin{example*}
+	The sequence $\set{1/n}_{n\in\NN}$ converges to $0$ in $\QQ$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau)$ be a topological space and let $A\subseteq X$.
+	Then $A$ is called \textit{perfect} if and only if all $x\in A$ are accumulation points of $A$.
+\end{definition*}
+\begin{example*}
+	Any open interval is perfect.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau_X)$ and $(Y,\tau_Y)$ be topological spaces.
+	A function $f:X\rightarrow Y$ is said to be \textit{continuous} at $x\in X$ if and only if for each $V\in\tau_Y$ containing $f(x)$, there exists a $U\in\tau_X$ containing $x$ such that $f(U)\subseteq V$.
+	Furthermore, $f$ is said to be continuous on $A\subseteq X$ if and only if $f$ is continuous at each $x\in A$.
+\end{definition*}
+\begin{example*}
+	$f(x)=x^2$ is continuous on $\RR$ under the metric topology.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau)$ be a topological space and let $A\subseteq X$
+	A family $\set{A_i}_{i\in I}\subset \mathcal{P}(X)$ is called a \textit{cover} of $A$ if and only if $A\subseteq\cup_{i\in I} A_i$.
+	If $\set{A_j}_{j\in J\subseteq I}$ is also a cover of $A$, then, $\set{A_j}_{j\in J}$ is called a \textit{subcover} of $A$.
+	If a cover of $A$ is formed only by open sets, then it is called an \textit{open cover} of $A$.
+\end{definition*}
+\begin{example*}
+	$[0,100]$ is a cover of $(10,11)$ that has a subcover of $[9,12]$.
+	$\set{B(x,1)}_{x\in\RR}$ is an open cover of $\RR$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau)$ be a topological space and let $A\subseteq X$.
+	We say $A$ is \textit{compact} if and only if each open cover of $A$ admits a finite subcover.
+\end{definition*}
+\begin{example*}
+	Any closed interval is compact in $\RR$ under the usual metric topology.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau)$ be a topological space and let $A\subseteq X$.
+	We say $A$ is \textit{disconnected} if and only if there exist disjoint sets $U,V\subseteq X$ such that
+	\begin{itemize}
+		\item $A\subset U\cup V$
+		\item $A\cap U\neq\emptyset\,\,\wedge\,\, A\cap V\neq\emptyset$
+		\item $A\cap U\cap V=\emptyset$.
+	\end{itemize}
+	If $A$ is not disconnected, we say that $A$ is \textit{connected}.
+\end{definition*}
+\begin{example*}
+	$[0,1]$ is connected and $(0,1/2)\cup(1/2,1)$ is disconnected.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau)$ be a topological space and let $A\subseteq X$.
+	Then $A$ is \textit{totally disconnected} if and only if for any $x,y\in A$ there exist disjoint $U,V\in\tau$ such that $x\in U$, $y\in V$ and $A\subset U\cup V$.
+\end{definition*}
+\begin{example*}
+	The rational numbers are totally disconnected in $\RR$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau)$ be a topological space and let $A\subseteq X$.
+	We say that $A$ is \textit{dense} in $X$ if and only if $\bar{A}=X$.
+\end{definition*}
+\begin{example*}
+	$\QQ$ is dense in $\RR$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau)$ be a topological space and let $A\subseteq X$.
+	We say that $A$ is \textit{nowhere dense} in $X$ if and only if $\paren{\bar{A}}^o=\emptyset$.
+\end{definition*}
+\begin{example*}
+	$\ZZ$ is nowhere dense in $\RR$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau_x)$ and $(Y,\tau_y)$ be topological spaces.
+	We say that $X$ and $Y$ are \textit{homeomorphic} if and only if there exists a continuous bijection $f:(X,\tau_x)\rightarrow(Y,\tau_y)$ where $f^{-1}$ is also continuous.
+\end{definition*}
+\begin{example*}
+	For $a,b\in\RR$ with $a<b$, the sets $(a,b)$ and $\RR$ are homeomorphic under the standard metric topology.
+\end{example*}
+
+\begin{definition*}
+	Let $X$ be a nonempty set.
+	Let $\mathcal{B}$ be a collection of subsets of $X$ such that
+	\begin{itemize}
+		\item for each $x\in X$ there is a $B\in\mathcal{B}$ such that $x\in B$
+		\item and if $x\in B_1\cap B_2$ where $B_1,B_2\in\mathcal{B}$, then there exists a $B\in\mathcal{B}$ such that $x\in B\subseteq B_1\cap B_2$
+	\end{itemize}
+	then $\mathcal{B}$ is called a \textit{basis} for a topology on $X$.
+	Furthermore, the \textit{topology generated by} $\mathcal{B}$ is given by
+	\[
+		\tau = \set{U\subseteq X|\forall x\in U,\,\exists B\in\mathcal{B} \text{ s.t. } x\in B\subseteq U}.
+	\]
+\end{definition*}
+\begin{example*}
+	Let $(X,d)$ be a metric space then the \textit{metric topology} induced by $d$ is given by
+	\[
+	\tau_d=\set{U\subseteq X| x\in U\Rightarrow \exists r>0\text{ s.t. } B(x,r)\subseteq U}.
+	\]
+\end{example*}
+
+
+\pagebreak
+
+
+\section*{Metric Spaces}
+
+
+\begin{definition*}
+	A set $X$ and a metric $d:X^2\rightarrow\RR$ form a \textit{metric space} $(X,d)$ if and only if all of the following are satisfied:
+	\begin{enumerate}
+		\item for all $x,y\in X$, $d(x,y)\geq 0$ and $d(x,y)=0$ if and only if $x=y$;
+		\item for all $x,y\in X$, $d(x,y)=d(y,x)$;
+		\item and for all $x,y,z\in X$ $d(x,y)\leq d(x,z)+d(z,x)$.
+	\end{enumerate}
+\end{definition*}
+\begin{example*}
+	$\RR$ and absolute value form a metric space.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space.
+	Let $x_0\in X$ and $r\in\RR$.
+	An \textit{open ball} in $(X,d)$ around $x_0$ of radius $r$ is the set $B(x_0,r)=\set{x\in X|\, d(x_0,x)< r}$.
+\end{definition*}
+\begin{example*}
+	In $\RR$, $B(x_0, r)=(x_0-r,x_0+r)$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space.
+	A subset of $A$ of $(X,d)$ is called \textit{open} if and only if for each $x\in A$, there exists an $r_x>0$ such that $B(x,r_x)\subseteq A$.
+\end{definition*}
+\begin{example*}
+	The set $(-n, n)\cup (k,k+1)$ is open in $\RR$ for $k,n\in\RR$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space.
+	A subset of $A$ of $(X,d)$ is called \textit{closed} if and only if $X\setminus A$ is open.
+\end{definition*}
+\begin{example*}
+	$\RR$ is closed in $\RR$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space.
+	The \textit{closed ball} of radius $r$ about $x\in X$ is $\bar{B}(x,r)=\set{y\in X| d(x,y)\leq r}$.
+\end{definition*}
+\begin{example*}
+	In $\RR$, $\bar{B}(x_0, r)=[x_0-r,x_0+r]$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space.
+	The \textit{diameter} of a nonempty subset, $A$, of $X$ is $\sup\limits_{x,y\in A}d(x,y)$. 
+\end{definition*}
+\begin{example*}
+	The diameter of $(0,1)\cup(10,12)$ in $(\RR, |\cdot|)$ is 12.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space and let $A\subseteq X$.
+	A point $x\in X$ is a \textit{closure point} of $A$ if and only if for all $r>0$, $B(x,r)\cap A\neq\emptyset$.
+\end{definition*}
+\begin{example*}
+	The $0$ is the only closure point of the set $\set{0}$.
+	The point $3$ is a closure point of $(0,3)$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space and let $A\subseteq X$.
+	A point $x\in X$ is an \textit{accumulation point} of $A$ if and only if for all $r>0$, $B(x,r)\cap A\setminus\set{x}\neq\emptyset$.
+\end{definition*}
+\begin{example*}
+	The set $\set{0}$ has no accumulation points since $B(0,r)\cap\set{0}=\set{0}$.
+	The point $3$ is an accumulation point of $(0,3)$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space and let $A\subseteq X$.
+	Let $x\in X$.
+	We say that the \textit{closure} of $A$, denoted $\bar{A}$, is the set $\bar{A}=\set{x\in A|\,\forall r>0,\, B(x,r)\cap A\neq\emptyset}$.
+\end{definition*}
+\begin{example*}
+	Under the Euclidean metric $\RR$ is the closure of $\QQ$ and $[a,b]$ is the closure of $(a,b)$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space and let $A\subseteq X$.
+	Let $x\in A$.
+	Then $x$ is an \textit{interior point} of $A$ if and only if there exists an $r>0$ such that $B(x,r)\subseteq A$.
+	Moreover, the \textit{interior} of $A$, denoted $A^o$ is the set $A^o=\set{x\in A|\,\exists r>0,\, B(x,r)\subseteq A}$.
+\end{definition*}
+\begin{example*}
+	An interior point of $[0,1]$ under the Euclidean metric is $1/2$ and the interior of $[a,b]$ is $(a,b)$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space and let $\set{x_n}_{n\in\NN}$ be a sequence in $X$.
+	We say that $x_n$ \textit{converges} to $x$ if and only if:
+	\begin{enumerate}
+		\item the real valued sequence $d(x_n,x)\rightarrow 0$;
+		\item for all $\varepsilon >0$ there exists a $N_\varepsilon\in\NN$ such that $d(x_n,x)<\varepsilon$ for all $n\geq N_\varepsilon$.
+	\end{enumerate}
+\end{definition*}
+\begin{example*}
+	In $\RR$, the sequence $\set{1/n | n\in\NN}$ converges to 0.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space and let $\set{x_n}_{n\in\NN}$ be a sequence in $X$.
+	We say that $x_n$ is \textit{Cauchy} in $X$ if and only if for all $\varepsilon>0$ there exists a $N_\varepsilon\in\NN$ such that $d(x_n,x_m)<\varepsilon$ for all $n,m\geq N_\varepsilon$.
+\end{definition*}
+\begin{example*}
+	In $\QQ$, the sequence
+	\[
+		\set{\sum_{k=1}^n \frac{1}{n^2}}_{n\in\NN}
+	\]
+	is Cauchy, but not convergent.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space.
+	We say $(X,d)$ is \textit{complete} if and only if all Cauchy sequences in $X$ converge to some $x\in X$.
+\end{definition*}
+\begin{example*}
+	$\RR$ is a complete metric space under the Euclidean metric.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ be a metric space.
+	We say $(X,d)$ is \textit{incomplete} if and only if there exists some sequence that is Cauchy in $X$ but not convergent in $X$.
+\end{definition*}
+\begin{example*}
+	$\QQ$ is incomplete under the Euclidean metric because
+	\[
+		\set{\sum_{k=1}^n \frac{1}{n^2}}_{n\in\NN}
+	\]
+	is Cauchy, but does not converge in $\QQ$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ and $(Y,\rho)$ be metric spaces.
+	A function $f:(X,d)\rightarrow(Y,\rho)$ is called \textit{continuous} at $x_0\in X$ if and only if for all $\varepsilon>0$ there exists a $\delta_\varepsilon>0$ such that $\rho(f(x),f(x_0))>\varepsilon$ whenever $d(x,x_0)<\delta_\varepsilon$.
+\end{definition*}
+\begin{example*}
+	All $\CC$-valued polynomials are continuous on $\CC$ under the Euclidean metric.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ and $(Y,\rho)$ be metric spaces.
+	A function $f:(X,d)\rightarrow(Y,\rho)$ is called \textit{uniformly continuous} if and only if for all $\varepsilon>0$ there exists a $\delta_\varepsilon>0$ such that $\rho(f(x),f(y))>\varepsilon$ whenever $d(x,y)<\delta_\varepsilon$.
+\end{definition*}
+\begin{example*}
+	Any differentiable function with a bounded derivative is uniformly continuous.
+	E.g. $f(x)=ax+b$ where $a$ and $b$ are constants.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,d)$ and $(Y,\rho)$ be metric spaces.
+	A function $f:(X,d)\rightarrow(Y,\rho)$ is called an \textit{isometry} if and only if for all $x,y\in X$, $\rho(f(x),f(y))=d(x,y)$.
+\end{definition*}
+\begin{example*}
+	Let $f:\RR\rightarrow\RR$ be defined by $f(x):=x+b$ for any $b\in\RR$.
+	Then $f$ is an isometry.
+\end{example*}
+
+\begin{definition*}
+	We say that metric spaces $(X,d)$ and $(Y,\rho)$ are \textit{isometric} if and only if there exists a surjective isometry between them.
+\end{definition*}
+\begin{example*}
+	The map, $f:\RR^2\rightarrow\CC$ given by $f(x,y)=x+iy$ is a surjective isometry and thus $\RR^2$ and $\CC$ are isometric.
+\end{example*}
+
+\begin{definition*}
+	Let $(Y,\rho)$ be a complete metric space and let $(X,d)$ be a metric space.
+	Then, $(Y,\rho)$ is called the \textit{completion} of $(X,d)$ if and only if there exists an isometry $f:(X,d)\rightarrow (Y,\rho)$ such that the image $f(X)$ is dense in $Y$, that is $\overline{f(X)}=Y$.
+\end{definition*}
+\begin{example*}
+	Let $f:\QQ\rightarrow\RR$ be defined by $f(x):=x$.
+	Then $f$ is an isometry such that $\overline{f(\QQ)}=\RR$ and thus $(\RR,\abs{\cdot})$ is the completion of $(\QQ,\abs{\cdot})$.
+\end{example*}
+
+
+\pagebreak
+
+
+\section*{Measure Theory}
+
+
+\begin{definition*}
+	Let $S$ be a nonempty set.
+	A collection $\mathcal{F}(S)$ of subsets of $S$ is called a $\sigma$\textit{-algebra} on $S$ if and only if all of the following are satisfied:
+	\begin{itemize}
+		\item $\emptyset\in\mathcal{F}(S)$;
+		\item $A\in\mathcal{F}(S)\Rightarrow A\cap B\in\mathcal{F}(S)$;
+		\item and $\set{A_i}_{i\in\NN}\subseteq \mathcal{F}(S)\Rightarrow \cup_{i\in\NN}A_i\in\mathcal{F}(S)$.
+	\end{itemize}
+\end{definition*}
+\begin{example*}
+	The smallest $\sigma$-algebra on any set $S$ is $\set{\emptyset, S}$, while the largest is $\mathcal{P}(S)$.
+\end{example*}
+
+\begin{definition*}
+	Let $(X,\tau)$ be a topological space, then the $\sigma$\textit{-algebra generated by }$\tau$ is the smallest $\sigma$-algebra containing $\tau$.
+\end{definition*}
+\begin{example*}
+	In $\RR$, the $\sigma$-algebra generated by the Euclidean metric topology is called the Borel $\sigma$-algebra.
+\end{example*}
+
+\begin{definition*}
+	Let $X$ be a nonempty set and let $\mathcal{F}(X)$ be a $\sigma$-algebra on $X$.
+	A function $\mu:\mathcal{F}(S)\rightarrow [0,\infty)$ is called a \textit{measure} if and only if all of the following are satisfied:
+	\begin{itemize}
+		\item $\mu(\emptyset)=0$;
+		\item and if $\set{A_i}_{i\in\NN}\subseteq\mathcal{F}(X)$ and $A_i\cap A_j=\emptyset$ if $i\neq j$ then $\mu(A_i\cup A_j)=\mu(A_i)+\mu(A_j)$ and $\mu\paren{\cup_{i\in\NN} A_i}=\sum_{i=1}^\infty \mu(A_i)$.
+	\end{itemize}
+	Furthermore, $(X,\mathcal{F}(X), \mu)$ form a \textit{measure space}.
+	Additionally a function $f:X\rightarrow\RR$ is called \textit{measurable} if and only if for all $\alpha\in\RR$, $A_\alpha=\set{x\in X|f(x)>\alpha}\in\mathcal{F(X)}$.
+\end{definition*}
+\begin{example*}
+	Let $X$ be a non-empty set and let $A\subseteq X$.
+	The function $\mu:\mathcal{P}(X)\rightarrow[0,\infty]$ given by
+	\[
+	\mu(A)=\begin{cases}
+	|A| & A\text{ finite}\\
+	\infty &A\text{ infinite}
+	\end{cases}
+	\]
+	is a measure called the counting measure.
+\end{example*}
+
+\begin{definition*}
+	If $\mu$ is a measure on a $\sigma$-algebra $\mathcal{F}(X)$ on $X$, then a set $A\subseteq X$ is called a \textit{null set} if and only if $\mu(A)=0$.
+\end{definition*}
+\begin{example*}
+	In the Lesbesque measure, any countable set is a null set.
+\end{example*}
+
+\begin{definition*}
+	A function $f:X\rightarrow\RR$ is called a \textit{simple function} if and only if $f$ has only finitely many values.
+\end{definition*}
+\begin{example*}
+	Any constant function is simple.
+\end{example*}
+
+\begin{definition*}
+	The \textit{integral} of a non-negative simple function in standard form $\phi=\sum_{i=1}^n a_i\chi_{A_i}$ is
+	\[
+		\int\phi d\mu=\sum_{i=1}^n a_i\mu(A_i).
+	\]
+	The integral of a non-negative measurable function is
+	\[
+	\int fd\mu =\sup\limits_{\phi\text{ simple, non-negative, } 0\leq\phi\leq f} \int \phi d\mu.
+	\]
+	The integral of a measurable function $f$ is given by
+	\[
+	\int f d\mu = \int f^+d\mu -\int f^-d\mu
+	\]
+	where $f^+(x)=\set\sup{f(x),0}$ and $f^-(x)=\sup\set{0,-f(x)}$.
+	
+\end{definition*}
+

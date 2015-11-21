@@ -1,8 +1,6 @@
 
 \chapter{Box-counting Dimension}
 
-\section{Introduction}
-
 \section{Covers}
 
 Let $F$ be a subset of $\RR^n$.
@@ -31,7 +29,7 @@ We now define the following counts
 	Again, by minimality, $N^B_\delta(F)\leq N^D_\delta(F)$ and $N^B_\delta(F) = N^D_\delta(F)$.
 \end{proof}
 
-\section{Box-counting Dimension}
+\section{Box-Counting Dimension}
 
 \begin{definition}
 	We say the \textit{lower box-counting dimension} of $F\subset\RR^n$ is
@@ -100,6 +98,8 @@ We now define the following counts
 
 \section{Examples}
 
+For our first example, we take the box-counting dimension of one of a canonical fractal, the Cantor Set.
+
 \begin{example}
 	Let $C$ denote the middle-$\lambda$ Cantor set for $0<\lambda < 1$.
 	\[
@@ -133,6 +133,8 @@ We now define the following counts
 		\dim_B(C)=\frac{\ln2}{\ln\paren{\frac{2}{1-\lambda}}}.
 	\]
 \end{proof}
+
+We can expand this logic to more general forms of the Cantor set, and present two examples of it here.
 
 \begin{example}
 	Let $F$ be the set containing all numbers in $[0,1]$ that do not have a 5 in their decimal expansion.
@@ -192,7 +194,41 @@ We now define the following counts
 	After we take the limit of both sides we get, $\dim_B(C)=1$.
 \end{proof}
 
-However, while the Box-counting dimension is nice for our Cantor-like sets, it has a certain undesirable property, that is countable sets can have non-zero dimension.
+Furthermore, we can take the box-counting dimension of countable sets as well.
+
+\begin{example}
+	Let $S=\set{(n!)^{-1}}_{n=1}^\infty\cup\set{0}$, then
+	\[
+		\dim_B(S)=0.
+	\]
+\end{example}
+\begin{proof}
+	We begin by computing $l_S(n)$ and $r_S(n)$.
+	\begin{align*}
+		l_S(n) &= \frac{n}{(n+1)!}\\
+		r_S(n) &= \frac{n-1}{n!}
+	\end{align*}
+	We then invoke Lemma\autoref{lems} to get
+	\[
+		\frac{\ln k}{-\ln (k-1)+\ln(k!)} \leq \frac{\ln N^C_\delta(S)}{-\ln\delta} \leq \frac{\ln 2+\ln k}{-\ln k +\ln ((k+1)!)}.
+	\]
+	Since the limit of both the far right and the far left of the previous inequality is zero, $\dim_B(S)=0$.
+\end{proof}
+
+\section{Properties of the Box-Counting Dimension}
+
+When we speak about dimensions, there are a few properties we want them to have, namely:
+\begin{enumerate}
+	\item if $E\subseteq F$, then $\dim E\leq\dim F$;
+	\item any open set $O\subseteq \RR^n$ should have $\dim O = n$;
+	\item when $F\subseteq \RR^n$, $0\leq \dim F\leq n$;
+	\item if $\set{S_i}_{i\in I}$ is a countable collection of sets, then $\dim \bigcup_{i\in I} S_i = \sup\limits_{i\in I}\dim S_i$;
+	\item if $S$ is countable, then $\dim S=0$.
+\end{enumerate}
+
+% TODO: Prove these
+
+However, while the Box-counting dimension is nice for our Cantor-like sets and respects our monotonicity, it has a certain undesirable property, that is countable sets can have non-zero dimension.
 
 \begin{lemma}\label{lems}
 	Let $\set{x_n}_{n=1}^\infty$, be a monotone decreasing sequence in $[0,1]$ that tends to 0 and let $0 < \delta < 1/2$.
@@ -266,22 +302,27 @@ However, while the Box-counting dimension is nice for our Cantor-like sets, it h
 	which tends to $1/(j+1)$ and by Squeeze theorem, $\dim_B(S_j)$ is $1/(j+1)$.
 \end{proof}
 
-\begin{example}
-	Let $S=\set{(n!)^{-1}}_{n=1}^\infty\cup\set{0}$, then
-	\[
-		\dim_B(S)=0.
-	\]
-\end{example}
+\begin{corollary}\label{one-over-n-eq-half}
+	$\dim_B \set{1/n}_{n=1}^\infty=1/2\neq 0$
+\end{corollary}
+\begin{corollary}
+	The box-counting dimension is unstable.
+\end{corollary}
 \begin{proof}
-	We begin by computing $l_S(n)$ and $r_S(n)$.
-	\begin{align*}
-		l_S(n) &= \frac{n}{(n+1)!}\\
-		r_S(n) &= \frac{n-1}{n!}
-	\end{align*}
-	We then invoke Lemma\autoref{lems} to get
+	Proceed via contradiction.
+	Assume that
+	\begin{equation}\label{bc-eqn1}
+		\dim_B \bigcup_{n=1}^\infty \set{1/n} = \sup_{n\in\NN} \dim_B \set{1/n}.
+	\end{equation}
+	We need to find the dimension of a singleton.
+	Since this is a singleton, we can cover it with exactly one set regardless of $\delta$, thus
 	\[
-		\frac{\ln k}{-\ln (k-1)+\ln(k!)} \leq \frac{\ln N^C_\delta(S)}{-\ln\delta} \leq \frac{\ln 2+\ln k}{-\ln k +\ln ((k+1)!)}.
+		\dim_B \set{x} =\lim_{\delta \rightarrow 0} \frac{\ln N_\delta(\set{x})}{-\ln \delta}=\lim_{\delta \rightarrow 0} \frac{\ln 1}{-\ln \delta}=0.
 	\]
-	Since the limit of both the far right and the far left of the previous inequality is zero, $\dim_B(S)=0$.
+	Therefore, the righthand side of \autoref{bc-eqn1} is equal to zero.
+	However, by the Corollary\autoref{one-over-n-eq-half} we know the lefthand side is equal to one half, thus creating a contradiction.
 \end{proof}
 
+The intuition behind this result is that $N_\delta(F)$ must count the cardinality of the cover instead of measuring how much it contributes, thus a singleton in the cover contributes the same as an entire interval.
+In essence, this problem exists because $N_\delta(F)$ is like the counting measure instead of the Lebesgue measure.
+To solve this problem, we must introduce a way to determine how much each set in the cover contributes to the dimension; that is, we introduce the Hausdorff measure.
