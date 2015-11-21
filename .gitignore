@@ -1,0 +1,8 @@
+*.aux
+*.out
+*.log
+*.run.xml
+*-blx.bib
+*.bbl
+*.blg
+paper.cls
