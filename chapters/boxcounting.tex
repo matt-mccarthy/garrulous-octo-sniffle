@@ -7,7 +7,7 @@ Let $F$ be a subset of $\RR^n$.
 We define the following covers:
 \begin{align*}
 	\mcb_\delta(F)&:=\set{B=\set{B(x_j,\delta/2)}_{j=1}^{n_B}| F\subseteq \cup B}\\
-	\mcd_\delta(F)&:=\set{D=\set{D_j}_{j=1}^{n_D}| F\subseteq \cup D \,\,\wedge\,\, \diam(D_j)\leq\delta\,\, \forall\,\, D_j\in D}.
+	\mcd_\delta(F)&:=\set{D=\set{D_j}_{j=1}^{n_D}| F\subseteq \cup D \,\wedge\,\diam {(D_j)}\leq\delta\, \forall \, D_j\in D}.
 \end{align*}
 We now define the following counts
 \begin{align*}
@@ -66,7 +66,7 @@ We now define the following counts
 		\frac{\ln N_{c\delta}(f(F))}{-\ln(c\delta)+\ln\delta}\leq\frac{\ln N_\delta(F)}{-\ln\delta}
 	\]
 	and $\diml_B(f(F))\leq\diml_B(F)$ and $\dimu_B(f(F))\leq\dimu_B(F)$.
-	
+
 	If $f$ is bi-Lipschitz, then $f^{-1}$ is Lipschitz on $f^{-1}(F)$.
 	Thus $\diml_B(f^{-1}(f(F)))\leq\diml_B(f(F))$ and $\dimu_B(f^{-1}(f(F)))\leq\dimu_B(f(F))$.
 	Therefore, $\diml_B(f(F))=\diml_B(F)$ and $\dimu_B(f(F))=\dimu_B(F)$.
@@ -111,15 +111,15 @@ For our first example, we take the box-counting dimension of one of a canonical 
 	Assume we are removing the middle $\lambda$ of the interval $[0,a]$ where $a$ is a positive real number.
 	Since we removed $a\lambda$ from $[0,a]$, we have exactly $a-a\lambda=a(1-\lambda)$ length remaining.
 	Since we removed the middle $a/\lambda$, we equally distribute the remaining length into two subintervals of length $a(1-\lambda)/2$.
-	
+
 	Let $l_n$ represent the length of each interval in $C_n$ and define $l_0=1$.
 	Thus, $l_1=(1-\lambda)/2$ and $l_{n+1}=l_n(1-\lambda)/2$ by our previous derivation.
-	Solving this recursion yields $l_n=[(1-\lambda)/2]^n$.
-	
+	Solving this recursion yields $l_n={[{(1-\lambda)}/2]}^n$.
+
 	Let $\delta>0$ be given.
 	Choose $n$ such that $l_{n+1}\leq\delta< l_n$.
 	Since $\delta \geq l_{n+1}$, we need no more $2^{n+1}$ sets of diameter $\delta$ to cover $C$ because there are exactly $2^{n+1}$ intervals of length $l_{n+1}$ in $C_{n+1}$.
-	Furthermore, since $\delta < l_n$, we need at least $2^n$ sets of diameter $\delta$ to cover $C$ becayse there are exactly $2^n$ intervals of length $l_n$ is $C_n$.
+	Furthermore, since $\delta < l_n$, we need at least $2^n$ sets of diameter $\delta$ to cover $C$ because there are exactly $2^n$ intervals of length $l_n$ is $C_n$.
 	Thus yielding the inequality
 	\[
 	2^n \leq N^D_\delta(C) \leq 2^{n+1}.
@@ -150,7 +150,7 @@ We can expand this logic to more general forms of the Cantor set, and present tw
 	In our construction, we will spilt $F_n$ into ten intervals of length $10^{n+1}$ and remove the interval $(5\cdot10^{n+1},6\cdot10^{n+1})$, removing any number with a 5 in the $n+1$st decimal place from $F_n$.
 	We now have nine subintervals left, all of which are copies of $F_{n+1}$.
 	This construction means that we have $9^n$ copies of $F_n$ for each $n$.
-	
+
 	Let $\delta >0$ be given.
 	Choose $n$ such that $10^{-(n+1)}\leq \delta<10^{-n}$.
 	Since $\delta\geq 10^{-(n+1)}$, we need no more than $9^{n+1}$ sets of diameter $\delta$ to cover $F$.
@@ -177,10 +177,10 @@ We can expand this logic to more general forms of the Cantor set, and present tw
 	To construct the Cantor Dust, we consider the unit square, call this $C_0$.
 	Then subdivide $C_0$ into 16 more squares and keep precisely 4 of them, call them copies of $C_1$.
 	We iterate this process by splitting $C_n$ into 16 squares and keeping 4 of them, while calling each one $C_{n+1}$.
-	We should note that the side length of all of the $4^n$ copies of $C_n$ is $(1/4)^n$.
+	We should note that the side length of all of the $4^n$ copies of $C_n$ is ${(1/4)}^n$.
 
 	Let $\delta>0$ be given.
-	We begin by selecting an $n$ such that $(1/4)^{n+1}\leq \delta< (1/4)^n$.
+	We begin by selecting an $n$ such that ${(1/4)}^{n+1}\leq \delta< {(1/4)}^n$.
 	Thus we need no more than $4^{n+1}$ squares of side length $\delta$ and no fewer than $4^n$ squares of side length $\delta$ to cover $C$.
 	However, since this is a cover of squares of side length $\delta$, we have a cover using balls of diameter $\sqrt{2}\delta$, by Pythagorean theorem.
 	Thus yielding the following inequality
@@ -197,7 +197,7 @@ We can expand this logic to more general forms of the Cantor set, and present tw
 Furthermore, we can take the box-counting dimension of countable sets as well.
 
 \begin{example}
-	Let $S=\set{(n!)^{-1}}_{n=1}^\infty\cup\set{0}$, then
+	Let $S=\set{{(n!)}^{-1}}_{n=1}^\infty\cup\set{0}$, then
 	\[
 		\dim_B(S)=0.
 	\]
@@ -263,11 +263,11 @@ However, while the Box-counting dimension is nice for our Cantor-like sets and r
 \begin{proof}
 	From the construction of $S_j$ we know that
 	\[
-		l_{S_j}(k) = \frac{1}{k^j}-\frac{1}{(k+1)^j} = \frac{(k+1)^j-k^j}{k^j(k+1)^j}
+		l_{S_j}(k) = \frac{1}{k^j}-\frac{1}{{(k+1)}^j} = \frac{{(k+1)}^j-k^j}{k^j{(k+1)}^j}
 	\]
 	and
 	\[
-		r_{S_j}(k) = \frac{1}{(k-1)^j}-\frac{1}{k^j} = \frac{k^j-(k-1)^j}{k^j(k-1)^j}.
+		r_{S_j}(k) = \frac{1}{{(k-1)}^j}-\frac{1}{k^j} = \frac{k^j-{(k-1)}^j}{k^j{(k-1)}^j}.
 	\]
 	By Lemma\autoref{lems}, we know that
 	\[
@@ -276,28 +276,28 @@ However, while the Box-counting dimension is nice for our Cantor-like sets and r
 	Thus, the box-counting dimension is in between the limits of the far left and far right of this inequality.
 	Consider $\ln k/(-\ln r_{S_j}(k))$.
 	\[
-		\frac{\ln k}{-\ln r_{S_j}(k)}=\frac{\ln k}{-\ln (k^j-(k-1)^j)+j\ln k +j\ln(k+1)}
+		\frac{\ln k}{-\ln r_{S_j}(k)}=\frac{\ln k}{-\ln (k^j-{(k-1)}^j)+j\ln k +j\ln(k+1)}
 	\]
-	Consider $n^j-(n-1)^j$.
+	Consider $n^j-{(n-1)}^j$.
 	\[
-		n^j-(n-1)^j=n^{j-1}\paren{ n - (n-1)\paren{\frac{n-1}{n}}^{j-1} }=n^{j-1}\paren{ n - (n-1)\paren{1-\frac{1}{n}}^{j-1} }
+		n^j-{(n-1)}^j=n^{j-1}\paren{ n - (n-1)\paren{\frac{n-1}{n}}^{j-1} }=n^{j-1}\paren{ n - (n-1)\paren{1-\frac{1}{n}}^{j-1} }
 	\]
 	Thus,
 	\[
-		\frac{\ln k}{-\ln r_{S_j}(k)}=\frac{\ln k}{-\ln(k-(k-1)(1-1/k)^{j-1})+\ln k +j\ln(k+1)}
+		\frac{\ln k}{-\ln r_{S_j}(k)}=\frac{\ln k}{-\ln(k-(k-1){(1-1/k)}^{j-1})+\ln k +j\ln(k+1)}
 	\]
 	which tends to $1/(j+1)$.
 	Consider $\ln 2k/(-\ln l_{S_j}(k))$.
 	\[
-		\frac{\ln 2k}{-\ln l_{S_j}(k)}=\frac{\ln 2k}{-\ln ((k+1)^j-k^j)+j\ln k +j\ln(k-1)}
+		\frac{\ln 2k}{-\ln l_{S_j}(k)}=\frac{\ln 2k}{-\ln ({(k+1)}^j-k^j)+j\ln k +j\ln(k-1)}
 	\]
-	Consider $(n+1)^j-n^j$.
+	Consider ${(n+1)}^j-n^j$.
 	\[
-		(n+1)^j-n^j=n^{j-1}\paren{ (n+1)\paren{\frac{n+1}{n}}^{j-1} - n }=n^{j-1}\paren{ (n+1)\paren{1+\frac{1}{n}}^{j-1} - n }
+		{(n+1)}^j-n^j=n^{j-1}\paren{ (n+1)\paren{\frac{n+1}{n}}^{j-1} - n }=n^{j-1}\paren{ (n+1)\paren{1+\frac{1}{n}}^{j-1} - n }
 	\]
 	Thus,
 	\[
-		\frac{\ln 2 +\ln k}{-\ln l_{S_j}(k)}=\frac{\ln 2+\ln k}{-\ln((k+1)(1+1/k)^{j-1}-k)+\ln k +j\ln(k+1)}
+		\frac{\ln 2 +\ln k}{-\ln l_{S_j}(k)}=\frac{\ln 2+\ln k}{-\ln((k+1){(1+1/k)}^{j-1}-k)+\ln k +j\ln(k+1)}
 	\]
 	which tends to $1/(j+1)$ and by Squeeze theorem, $\dim_B(S_j)$ is $1/(j+1)$.
 \end{proof}

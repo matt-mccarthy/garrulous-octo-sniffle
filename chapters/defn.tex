@@ -8,11 +8,11 @@
 \end{definition*}
 
 \begin{definition*}
-	Let $A$ and $B$ be nonempty sets and let $f$ be a relation between them. 
+	Let $A$ and $B$ be nonempty sets and let $f$ be a relation between them.
 	Then $f$ is a \textit{function} if and only if for $(x,y),(x,z)\in f$ then $y=z$.
 \end{definition*}
 \begin{example*}
-	Let $A$ be a nonempty set. 
+	Let $A$ be a nonempty set.
 	Then the identity map on $A$, $id_A(x)=x$, is a function.
 	On $\RR$, $\sin x$, and $\cos x$ are functions.
 \end{example*}
@@ -50,14 +50,14 @@
 	A nonempty set $A$ is \textit{countably infinite} if and only if there exists a bijection between $A$ and $\NN$.
 \end{definition*}
 \begin{example*}
-	$\ZZ$ is countably infinite since the map $f:\NN\rightarrow\ZZ$ given by $f(n)=(-1)^n\floor{n/2}$ is a bijection.
+	$\ZZ$ is countably infinite since the map $f:\NN\rightarrow\ZZ$ given by $f(n)={(-1)}^n\floor{n/2}$ is a bijection.
 \end{example*}
 
 \begin{definition*}
 	A nonempty set $A$ is \textit{countable} if and only if $A$ is finite or countably infinite.
 \end{definition*}
 \begin{example*}
-	The sets, $\NN,\ZZ,\QQ,\AA,$ and $\ZZ_n$ are countable.
+	The sets, $\NN$, $\ZZ$, $\QQ$, $\AA$, and $\ZZ_n$ are countable.
 \end{example*}
 
 \begin{definition*}
@@ -102,7 +102,7 @@
 	Then the \textit{supremum} of $A$, denoted $\sup A$, is an upper bound of $A$, $\alpha$, with the property that if $\beta$ is also an upper bound of $A$ then $\alpha\leq\beta$.
 \end{definition*}
 \begin{example*}
-	The supremem of $(-1,1)$ is $1$ and the supremum of $(-\pi, \pi]$ is $\pi$.
+	The supremum of $(-1,1)$ is $1$ and the supremum of $(-\pi, \pi]$ is $\pi$.
 \end{example*}
 
 \begin{definition*}
@@ -140,7 +140,7 @@
 	Let $(X,\tau)$ be a topological space and let $A\subseteq X$.
 	Then the \textit{interior} of $A$ is defined as
 	\[
-	A^o=\set{x\in A|\exists V\in\tau \text{ s.t. }(x\in V)\wedge (V\subseteq A)}. 
+	A^o=\set{x\in A|\exists V\in\tau \text{ s.t. }(x\in V)\wedge (V\subseteq A)}.
 	\]
 \end{definition*}
 \begin{example*}
@@ -165,7 +165,7 @@
 
 \begin{definition*}
 	Let $(X,\tau)$ be a topological space and let $A\subseteq X$.
-	A sequence $\set{x_n}_{n\in\NN}\subseteq X$ \textit{coverges} to $x\in X$ if and only if for all neighborhoods of $U$ of $x$, there exists an $N\in\NN$ such that $x_n\in U$ for all $n\geq N$. 
+	A sequence $\set{x_n}_{n\in\NN}\subseteq X$ \textit{coverges} to $x\in X$ if and only if for all neighborhoods of $U$ of $x$, there exists an $N\in\NN$ such that $x_n\in U$ for all $n\geq N$.
 \end{definition*}
 \begin{example*}
 	The sequence $\set{1/n}_{n\in\NN}$ converges to $0$ in $\QQ$.
@@ -212,7 +212,7 @@
 	We say $A$ is \textit{disconnected} if and only if there exist disjoint sets $U,V\subseteq X$ such that
 	\begin{itemize}
 		\item $A\subset U\cup V$
-		\item $A\cap U\neq\emptyset\,\,\wedge\,\, A\cap V\neq\emptyset$
+		\item $A\cap U\neq\emptyset\,\wedge\, A\cap V\neq\emptyset$
 		\item $A\cap U\cap V=\emptyset$.
 	\end{itemize}
 	If $A$ is not disconnected, we say that $A$ is \textit{connected}.
@@ -327,7 +327,7 @@
 
 \begin{definition*}
 	Let $(X,d)$ be a metric space.
-	The \textit{diameter} of a nonempty subset, $A$, of $X$ is $\sup\limits_{x,y\in A}d(x,y)$. 
+	The \textit{diameter} of a nonempty subset, $A$, of $X$ is $\sup\limits_{x,y\in A}d(x,y)$.
 \end{definition*}
 \begin{example*}
 	The diameter of $(0,1)\cup(10,12)$ in $(\RR, |\cdot|)$ is 12.
@@ -533,6 +533,5 @@
 	\int f d\mu = \int f^+d\mu -\int f^-d\mu
 	\]
 	where $f^+(x)=\set\sup{f(x),0}$ and $f^-(x)=\sup\set{0,-f(x)}$.
-	
-\end{definition*}
 
+\end{definition*}
