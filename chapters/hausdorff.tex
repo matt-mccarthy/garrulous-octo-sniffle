@@ -153,3 +153,17 @@ Recall the desired properties of any definition of dimension that we enumerated 
 	\]
 	by (4).
 \end{proof}
+
+\subsection{Remark on Stability}
+
+Consider the set $S=\set{1/n}_{n\in\NN}$.
+By property (5), we know that $\dim_H S=0$.
+However, this raises the question as to what the Hausdorff dimension does differently than the box-counting dimension.
+Suppose we're using the box-counting dimension with $N^D_\delta$.
+In the cover of the set we used, when $\delta$ was between $1/k^2$ and $1/{(k-1)}^2$ we had to cover the first $k$ terms with sets of diameter no greater than $\delta$.
+However, we could cover those $k$ terms, with singletons of the form $\set{1/k}$ or with balls of radius ${1/k^2}$ without affecting our count.
+
+When we take the Hausdorff dimension of $S$, we still need to cover those $k$ terms, however we are forced by the infinimum in $\hm^s_\delta$ to take minimal cover, or in other words, cover those $k$ terms with singletons.
+Since singletons have diameter zero, when $s>0$, they contribute absolutely nothing to our measure.
+Since these are the majority of the sets in our cover, only a constant number of sets actually contribute any length to our measure and as we make $\delta$ approach zero, the contribution of these sets goes to zero.
+Thus forcing the Hausdorff dimension of $S$ to be zero, since it cannot be positive or negative.
