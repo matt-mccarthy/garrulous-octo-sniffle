@@ -1,9 +1,155 @@
 
 \chapter{Hausdorff Dimension}
 
-\section{Hausdorff Measure}
+After exploring the deficiencies of the box-counting dimension, we need a better way to determine the dimension of the set.
+In order to do so, we must somehow account for the ``size'' of each set in our cover.
+Ideally, we want to encompass the properties of both the counting measure and Lesbesque measure, and thus we introduce the Hausdorff measure.
 
-\section{Definition}
+\section{The Hausdorff Measure}
+
+We begin by defining a $\delta$ cover.
+\begin{definition}
+	Let $F$ be a subset of a metric space $(X,d)$.
+	Then a \textit{$\delta$ cover of $F$} is $\set{U_i}_{i\in I}$ where $I$ is countable, and $\diam U_i \leq\delta$ for all $i\in I$.
+\end{definition}
+
+We define the $s$-dimensional Hausdorff-$\delta$ thingy as follows.
+
+\begin{definition}
+	Let $F\subseteq\RR^n$, and $s,\delta>0$ then the \textit{$s$-dimensional Hausdorff-$\delta$ thingy of $F$} is defined as
+	\[
+		\hm^s_\delta=\inf\set{\sum_{i\in I} {(\diam U_i)}^s | \set{U_i}_{i\in I} \text{ a $\delta$-cover of $F$}}.
+	\]
+\end{definition}
+Note that as $\delta$ tends to zero, the collection of covers over which we take the infinimum becomes smaller.
+This tells us that at the very least, $\hm^s_\delta(F)$ is non-increasing and thus will approach a limit as $\delta$ tends to zero.
+In turn, this leads us to the definition of the $s$-dimensional Hausdorff measure.
+
+\begin{definition}
+	Let $F\subseteq\RR^n$ and $s>0$, then the \textit{$s$-dimensional Hausdorff measure of $F$} is defined as
+	\[
+		\hm^s(F) = \lim_{\delta\rightarrow0} \hm^s_\delta,
+	\]
+\end{definition}
+
+\begin{thm}
+	For $s>0$, $\hm^s$ is a measure on the Borel $\sigma$-algebra of $\RR^n$.
+\end{thm}
+
+\begin{proof}
+	Let $z\in\RR^n$ and $X, Y\subseteq\RR^n$.
+	Define $D:\RR^n\times\mathcal{P}(\RR^n)\rightarrow\RR^+$ by
+	\[
+		D(z,X) := \inf_{x\in X} |z-x|
+	\]
+	and $D:{\mathcal{P}(\RR^n)}^2\rightarrow\RR$ by
+	\[
+		D(X,Y) := \inf_{x\in X,\, y\in Y} |x-y|.
+	\]
+
+	To show $\hm^s$ is a measure, we need to show that $\hm^s(\emptyset)=0$ and for $A,B\subseteq\RR^n$, with $A\cap B=\emptyset$, $\hm^s(A\cup B)=\hm^s(A)+\hm^s(B)$.
+
+	% TODO: Prove it.
+\end{proof}
+
+It should be noted that if $n=0$, $\hm^s$ is exactly the counting measure, and that if $n$ is a natural number then $\hm^s$ is the Lesbesque measure up to a constant multiple.
+
+\section{The Hausdorff Dimension}
+
+\begin{definition}
+	Let $F\subseteq\RR^n$, then the \textit{Hausdorff dimension of $F$} is defined as
+	\[
+		\dim_H F = \inf\set{s\geq 0 | \hm^s(F) = 0} = \sup\set{s\geq 0 | \hm^s(F)=\infty}.
+	\]
+\end{definition}
 
 \section{Properties}
 
+Recall the desired properties of any definition of dimension that we enumerated in chapter one.
+
+\begin{thm}
+	The Hausdorff dimension satisfies all of the following properties:
+	\begin{enumerate}
+		\item if $E\subseteq F$, then $\dim_H E\leq\dim_H F$;
+		\item any open set $O\subseteq \RR^n$ should have $\dim_H O = n$;
+		\item when $F\subseteq \RR^n$, $0\leq \dim_H F\leq n$;
+		\item if $\set{S_i}_{i\in I}$ is a countable collection of sets, then $\dim_H \bigcup_{i\in I} S_i = \sup\limits_{i\in I}\dim_H S_i$;
+		\item if $S$ is countable, then $\dim_H S=0$.
+	\end{enumerate}
+\end{thm}
+
+\begin{proof}[Proof (1)]
+	Suppose $E\subseteq F\subseteq\RR^n$.
+	Since $\hm^s$ is a measure and $E\subseteq F$, then
+	\[
+		\hm^{\dim_H E} (E) \leq \hm^{\dim_H E} (F).
+	\]
+	Since $\hm^{\dim_H E}(E)$ is finite and $\hm^{\dim_H E}(F)$ may not be finite, $\dim_H E \leq \dim_H F$.
+\end{proof}
+
+\begin{proof}[Proof (4)]
+	Let $\set{F_i}_{i\in I}$, be a countable collection of sets.
+	By (1), we know that $\sup\limits_{i\in I}\, \dim_H F_i \leq\dim_H \cup_{i\in I} F_i$.
+	Let $s > \sup\limits_{i\in I}\, \dim_H F_i$.
+	Since $\hm^s$ is a measure, we know
+	\[
+		0\leq \hm^s (\cup_{i\in I} F_i) \leq \sum_{i\in I} \hm^s(F_i).
+	\]
+	However, since $s > \sup\limits_{i\in I}\, \dim_H F_i \geq \dim_H F_i$ for all $i\in I$ we have $\hm^s(F_i)=0$ for all $i\in I$ and $\hm^s (\cup_{i\in I} F_i) = 0$.
+	Thus
+	\[
+		\dim_H \cup_{i\in I} F_i = \inf\set{s\geq 0 | \hm^s(\cup_{i\in I} F_i) = 0} =\sup\limits_{i\in I}\, \dim_H F_i
+	\]
+	and the Hausdorff dimension is stable.
+\end{proof}
+
+\begin{lemma}
+	In $\RR^n$, $\dim_H B(x,r) = n$.
+\end{lemma}
+\begin{proof}
+	% TODO: Prove it.
+\end{proof}
+
+\begin{proof}[Proof (3)]
+	Let $F\subseteq\RR^n$.
+	We know that we can cover $F$ with countably many open balls ${B_i}_{i\in I}$, each of dimension $n$.
+	Thus $F\subseteq \cup_{i\in I} B_i$ and $\dim_H F \leq \dim_H \cup_{i\in I} B_i$ and by (4) we have
+	\[
+		\dim_H F \leq \sup\limits_{i\in I} \dim_H B_i = n.
+	\]
+	Since $\hm^s$ is a measure, we have $0\leq \dim_H F$.
+\end{proof}
+
+\begin{proof}[Proof (2)]
+	Let $O\subseteq\RR^n$ be open.
+	We know that $\dim_H O\leq n$ by (3).
+	Since $O$ is open for each $x\in O$ there exists an $r>0$ such that $B(x,r)\subseteq O$.
+	Pick any $x\in O$ and take any $r$ such that $B(x,r)\subseteq O$.
+	Then $n=\dim_H B(x,r) \leq \dim_H O \leq n$ and $\dim_H O = n$.
+\end{proof}
+
+\begin{lemma}
+	Let $x\in\RR^n$, then $\dim_H \set{x} = 0$.
+\end{lemma}
+\begin{proof}
+	Note that the minimal $\delta$ cover of $\set{x}$ is $\set{x}$.
+	Let $s > 0$, then
+	\[
+		\hm^s_\delta(\set{x})=\diam \set{x}^s = 0^s = 0
+	\]
+	and $\hm^s(\set{x}) = 0$.
+	Thus,
+	\[
+		\dim_H \set{x} = \inf{s\geq 0| \hm^s(\set{x}) = 0} = 0.
+	\]
+\end{proof}
+
+\begin{proof}[Proof (5)]
+	Let $S\subset\RR^n$ be countable.
+	Then for some $I\subseteq\NN$, $S=\set{s_i}_{i\in I}$.
+	Thus,
+	\[
+		\dim_H S = \sup\limits_{i\in I} \dim_H s_i = 0
+	\]
+	by (4).
+\end{proof}

@@ -5,4 +5,7 @@
 *-blx.bib
 *.bbl
 *.blg
+*.fls
+*.gz
+*.fdb_latexmk
 paper.cls
