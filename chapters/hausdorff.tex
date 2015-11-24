@@ -11,6 +11,7 @@ We begin by defining a $\delta$ cover.
 \begin{definition}
 	Let $F$ be a subset of a metric space $(X,d)$.
 	Then a \textit{$\delta$ cover of $F$} is $\set{U_i}_{i\in I}$ where $I$ is countable, and $\diam U_i \leq\delta$ for all $i\in I$.
+	We denote the family of all $\delta$-covers of $F$ as $C_\delta(F)$.
 \end{definition}
 
 We define the $s$-dimensional Hausdorff-$\delta$ thingy as follows.
@@ -48,11 +49,49 @@ In turn, this leads us to the definition of the $s$-dimensional Hausdorff measur
 	\]
 
 	To show $\hm^s$ is a measure, we need to show that $\hm^s(\emptyset)=0$ and for $A,B\subseteq\RR^n$, with $A\cap B=\emptyset$, $\hm^s(A\cup B)=\hm^s(A)+\hm^s(B)$.
+	We begin by showing that $\hm^s(\emptyset)=0$.
+	Note that the minimal $\delta$-cover of $\emptyset$ is an empty cover, thus the sum of its diameters is zero.
+	Ergo $\hm^s(\emptyset)=\lim\limits_{\delta\rightarrow 0} hm^s_\delta(\emptyset)=\lim\limits_{\delta\rightarrow 0} 0 =0$.
+
+	Let $A,B\subseteq\RR^n$ such that $A\cap B=\emptyset$.
+	Since $A$ and $B$ are disjoint
 
 	% TODO: Prove it.
 \end{proof}
 
 It should be noted that if $n=0$, $\hm^s$ is exactly the counting measure, and that if $n$ is a natural number then $\hm^s$ is the Lesbesque measure up to a constant multiple.
+
+\subsection{Properties of the Hausdorff Measure}
+
+\begin{thm}
+	Let $F\subset\RR^n$ and let $f: F\rightarrow\RR^m$ be satisfy the H\"older condition
+	\[
+		|f(x)-f(y)| \leq c|x-y|^\alpha.
+	\]
+	Then for any s,
+	\[
+		\hm^{s/\alpha}(f(F))\leqq c^{s/\alpha}H^s(F).
+	\]
+\end{thm}
+\begin{proof}
+	Let $\delta>0$ be given.
+	Let $\mathcal{U}\in C_\delta(F)$.
+	Then by H\"older property,
+	\[
+		\diam f(F\cap U)\leq c{(\diam F\cap U)}^\alpha \leq c{(\diam U)}^\alpha\leq c\delta^\alpha
+	\]
+	for all $U\in\mathcal{U}$.
+	Thus, $f(\mathcal{U})=\set{f(F\cap U)}_{U\in\mathcal U}\in C_{c\delta^\alpha}(f(F))$.
+	Ergo,
+	\[
+		\sum_{U\in\mathcal{U}} {(\diam f(F\cap U))}^{s/\alpha}\leq c^{s/\alpha}\sum_{U\in\mathcal{U}}{(\diam U)}^s.
+	\]
+	And thus,
+	\[
+		\hm^{s/\alpha}_\delta (f(F)) \leq c^{s/\alpha}\hm^s_\delta F.
+	\]
+	Taking the limit as $\delta\rightarrow 0$, yields $\hm^{s/\alpha}(f(F))\leq c^{s/\alpha}\hm^s(F)$.
+\end{proof}
 
 \section{The Hausdorff Dimension}
 
@@ -71,9 +110,9 @@ Recall the desired properties of any definition of dimension that we enumerated 
 	The Hausdorff dimension satisfies all of the following properties:
 	\begin{enumerate}
 		\item if $E\subseteq F$, then $\dim_H E\leq\dim_H F$;
-		\item any open set $O\subseteq \RR^n$ should have $\dim_H O = n$;
-		\item when $F\subseteq \RR^n$, $0\leq \dim_H F\leq n$;
 		\item if $\set{S_i}_{i\in I}$ is a countable collection of sets, then $\dim_H \bigcup_{i\in I} S_i = \sup\limits_{i\in I}\dim_H S_i$;
+		\item when $F\subseteq \RR^n$, $0\leq \dim_H F\leq n$;
+		\item any open set $O\subseteq \RR^n$ should have $\dim_H O = n$;
 		\item if $S$ is countable, then $\dim_H S=0$.
 	\end{enumerate}
 \end{thm}
@@ -87,7 +126,7 @@ Recall the desired properties of any definition of dimension that we enumerated 
 	Since $\hm^{\dim_H E}(E)$ is finite and $\hm^{\dim_H E}(F)$ may not be finite, $\dim_H E \leq \dim_H F$.
 \end{proof}
 
-\begin{proof}[Proof (4)]
+\begin{proof}[Proof (2)]
 	Let $\set{F_i}_{i\in I}$, be a countable collection of sets.
 	By (1), we know that $\sup\limits_{i\in I}\, \dim_H F_i \leq\dim_H \cup_{i\in I} F_i$.
 	Let $s > \sup\limits_{i\in I}\, \dim_H F_i$.
@@ -120,7 +159,7 @@ Recall the desired properties of any definition of dimension that we enumerated 
 	Since $\hm^s$ is a measure, we have $0\leq \dim_H F$.
 \end{proof}
 
-\begin{proof}[Proof (2)]
+\begin{proof}[Proof (4)]
 	Let $O\subseteq\RR^n$ be open.
 	We know that $\dim_H O\leq n$ by (3).
 	Since $O$ is open for each $x\in O$ there exists an $r>0$ such that $B(x,r)\subseteq O$.
