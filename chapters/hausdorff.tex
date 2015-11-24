@@ -51,7 +51,7 @@ In turn, this leads us to the definition of the $s$-dimensional Hausdorff measur
 	To show $\hm^s$ is a measure, we need to show that $\hm^s(\emptyset)=0$ and for $A,B\subseteq\RR^n$, with $A\cap B=\emptyset$, $\hm^s(A\cup B)=\hm^s(A)+\hm^s(B)$.
 	We begin by showing that $\hm^s(\emptyset)=0$.
 	Note that the minimal $\delta$-cover of $\emptyset$ is an empty cover, thus the sum of its diameters is zero.
-	Ergo $\hm^s(\emptyset)=\lim\limits_{\delta\rightarrow 0} hm^s_\delta(\emptyset)=\lim\limits_{\delta\rightarrow 0} 0 =0$.
+	Ergo $\hm^s(\emptyset)=\lim\limits_{\delta\rightarrow 0} \hm^s_\delta(\emptyset)=\lim\limits_{\delta\rightarrow 0} 0 =0$.
 
 	Let $A,B\subseteq\RR^n$ such that $A\cap B=\emptyset$.
 	Since $A$ and $B$ are disjoint
@@ -63,7 +63,7 @@ It should be noted that if $n=0$, $\hm^s$ is exactly the counting measure, and t
 
 \subsection{Properties of the Hausdorff Measure}
 
-\begin{thm}
+\begin{thm}\label{hm-holder}
 	Let $F\subset\RR^n$ and let $f: F\rightarrow\RR^m$ be satisfy the H\"older condition
 	\[
 		|f(x)-f(y)| \leq c|x-y|^\alpha.
@@ -81,7 +81,7 @@ It should be noted that if $n=0$, $\hm^s$ is exactly the counting measure, and t
 		\diam f(F\cap U)\leq c{(\diam F\cap U)}^\alpha \leq c{(\diam U)}^\alpha\leq c\delta^\alpha
 	\]
 	for all $U\in\mathcal{U}$.
-	Thus, $f(\mathcal{U})=\set{f(F\cap U)}_{U\in\mathcal U}\in C_{c\delta^\alpha}(f(F))$.
+	Thus, $\set{f(F\cap U)}_{U\in\mathcal U}\in C_{c\delta^\alpha}(f(F))$.
 	Ergo,
 	\[
 		\sum_{U\in\mathcal{U}} {(\diam f(F\cap U))}^{s/\alpha}\leq c^{s/\alpha}\sum_{U\in\mathcal{U}}{(\diam U)}^s.
@@ -91,6 +91,35 @@ It should be noted that if $n=0$, $\hm^s$ is exactly the counting measure, and t
 		\hm^{s/\alpha}_\delta (f(F)) \leq c^{s/\alpha}\hm^s_\delta F.
 	\]
 	Taking the limit as $\delta\rightarrow 0$, yields $\hm^{s/\alpha}(f(F))\leq c^{s/\alpha}\hm^s(F)$.
+\end{proof}
+
+\begin{thm}\label{hm-sim}
+	Let $f:\RR^n\rightarrow\RR^n$ be a similarity transform with scale constant $\lambda$.
+	Then $\hm^s(f(F))=\lambda^s\hm^s(F)$.
+\end{thm}
+\begin{proof}
+	Since $f$ is a similarity transform with scale constant $\lambda$,
+	\[
+		|f(x)-f(y)|=\lambda|x-y|
+	\]
+	which is the H\"older condition with $\alpha=1$ and $c=\lambda$.
+	Thus,
+	\[
+		\hm^s(f(F))\leq \lambda^s\hm^s(F).
+	\]
+	Since $f$ is a similarity, $f$ is invertible and
+	\[
+		|f^{-1}(x)-f^{-1}(y)|=\lambda^{-1}|x-y|
+	\]
+	which is the H\"older condition with $\alpha=1$ and $c=\lambda^{-1}$.
+	Thus,
+	\[
+		\hm^s(F)=\hm^s(f^{-1}(f(F)))\leq\lambda^{-s}\hm^s(f(F))
+	\]
+	and
+	\[
+		\hm^s(f(F))=\lambda^s\hm^s(F).
+	\]
 \end{proof}
 
 \section{The Hausdorff Dimension}
@@ -206,3 +235,40 @@ When we take the Hausdorff dimension of $S$, we still need to cover those $k$ te
 Since singletons have diameter zero, when $s>0$, they contribute absolutely nothing to our measure.
 Since these are the majority of the sets in our cover, only a constant number of sets actually contribute any length to our measure and as we make $\delta$ approach zero, the contribution of these sets goes to zero.
 Thus forcing the Hausdorff dimension of $S$ to be zero, since it cannot be positive or negative.
+
+\subsection{Other Properties}
+
+Like the box counting dimension, the Hausdorff dimension also has a nice property involving the H\"older condition.
+
+\begin{thm}
+	Let $F\subset\RR^n$ and $f:F\rightarrow\RR^n$ satisfy the H\"older condition
+	\[
+		|f(x)-f(y)|\leq c{|x-y}^\alpha.
+	\]
+	Then $\dim_H f(F) \leq 1/\alpha \dim_H F$.
+\end{thm}
+
+\begin{proof}
+	Suppose $s>\dim_H F$.
+	Then, by Theorem\autoref{hm-holder}
+	\[
+		\hm^{s/\alpha}(f(F))\leq c^{s/\alpha}\hm^s(F)=0.
+	\]
+	Thus,
+	\[
+		\dim_H f(F) \leq \frac{s}{\alpha}
+	\]
+	for all $s > \dim_H$ which implies
+	\[
+		\dim_H f(F) \leq \frac{1}{\alpha}\dim_H F.
+	\]
+\end{proof}
+
+\begin{corollary}
+	If $f$ is bi-Lipschitz, then $\dim_H f(F)=\dim_H F$.
+\end{corollary}
+
+\begin{proof}
+	Since $f$ is bi-Lipschitz, then $\dim_H f(F)\leq \dim_H F$, $f$ is invertible, and $f^{-1}$ is bi-Lipschitz.
+	Since $f^{-1}$ is bi-Lipschitz, then $\dim_H F \leq \dim_H f(F)$ and $\dim_H f(F)\leq \dim_H F$. 
+\end{proof}
