@@ -270,5 +270,35 @@ Like the box counting dimension, the Hausdorff dimension also has a nice propert
 
 \begin{proof}
 	Since $f$ is bi-Lipschitz, then $\dim_H f(F)\leq \dim_H F$, $f$ is invertible, and $f^{-1}$ is bi-Lipschitz.
-	Since $f^{-1}$ is bi-Lipschitz, then $\dim_H F \leq \dim_H f(F)$ and $\dim_H f(F)\leq \dim_H F$. 
+	Since $f^{-1}$ is bi-Lipschitz, then $\dim_H F \leq \dim_H f(F)$ and $\dim_H f(F)\leq \dim_H F$.
+\end{proof}
+
+We also have a theorem that relates the Hausdorff dimension to the Box-counting dimension.
+
+\begin{thm}
+	Let $F\subset\RR^n$ then
+	\[
+		\dim_H F \leq \diml_B F.
+	\]
+\end{thm}
+\begin{proof}
+	Suppose that for some $s\geq 0$, $1<\hm^s(F)=\lim\limits_{\delta\rightarrow 0}\hm^s_\delta(F)$.
+	Let $\mathcal{U}\in C_\delta(F)$, then
+	\[
+		1 < \sum_{U\in\mathcal{U}}{(\diam U)}^s\leq\sum_{U\in\mathcal{U}}\delta^s=\delta^s (\card \mathcal{U}).
+	\]
+	If we take the infinimum of both sides we get,
+	\[
+		1 < \hm^s_\delta(F)=\inf_{\mathcal{U}\in C_\delta(F)}\sum_{U\in\mathcal{U}} {(\diam{U})}^s
+		\leq \delta^s\inf_{\mathcal{U}\in C_\delta(F)}\card{\mathcal{U}}=\delta^s N_\delta^D(F).
+	\]
+	Taking logs yields,
+	\[
+		0 < \ln N_\delta^D(F)+s\ln \delta
+	\]
+	which is equivalent to
+	\[
+		s\leq \frac{\ln N^_\delta^D(F)}{-\ln\delta}.
+	\]
+	Thus, $\dim_H F\leq \diml_B F$.
 \end{proof}
