@@ -428,3 +428,43 @@ We also have a theorem that relates the Hausdorff dimension to the Box-counting 
 		\dim_H F = \sup\limits_{i\in\NN} \dim_H F_i = \sup\limits_{i\in\NN} \dim_H f(F_i)=\dim_H f(F).
 	\]
 \end{proof}
+
+\begin{example}
+	Let $f:[0,1]\rightarrow\RR$ be Lipschitz.
+	Let $\gra f=\set{(x,f(x))|x\in[0,1]}$, then $\dim_H \gra f =1$.
+\end{example}
+\begin{proof}
+	Let $g:\gra f\rightarrow [0,1]$ be defined by $g(x,f(x))=x$.
+	We want to show that $g$ is bi-Lipschitz.
+	Note that $|g(x,f(x))-g(y,f(y))|=|x-y|$ and that since $f$ is Lipschitz, $|f(x)-f(y)|\leq M|x-y|$.
+	Consider $\sqrt{{(x-y)}^2+{(f(x)-f(y))}^2}$.
+	\[
+		\sqrt{{(x-y)}^2+{(f(x)-f(y))}^2}
+		\leq \sqrt{{(x-y)}^2+M^2{(x-y)}^2}
+		=\sqrt{M^2+1}|x-y|
+	\]
+	Thus, $\paren{\sqrt{{(x-y)}^2+{(f(x)-f(y))}^2}}/\sqrt{M^2+1}\leq|x-y|$.
+	Moreover,
+	\[
+		|x-y|=\sqrt{{(x-y)}^2}\leq\sqrt{{(x-y)}^2+{(f(x)-f(y))}^2}.
+	\]
+	Ergo,
+	\[
+		\frac{1}{\sqrt{M^2+1}}\sqrt{{(x-y)}^2+{(f(x)-f(y))}^2}
+		\leq |g(x,f(x))-g(y,f(y))|
+		\leq \sqrt{{(x-y)}^2+{(f(x)-f(y))}^2}
+	\]
+	and $g$ is bi-Lipschitz.
+	Therefore,
+	\[
+		\dim_H \gra f = \dim_H g(\gra f) = \dim_H [0,1] = 1.
+	\]
+\end{proof}
+
+\begin{example}
+	Let $F$ be the subset of $[0,1]$ whose elements have no instance of the digit five in their decimal expansion.
+	Then $\dim_H F=\ln 9/\ln 10$.
+\end{example}
+\begin{proof}
+	% TODO: Prove it
+\end{proof}
