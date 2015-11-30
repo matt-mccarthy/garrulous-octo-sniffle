@@ -53,13 +53,38 @@ In turn, this leads us to the definition of the $s$-dimensional Hausdorff measur
 	Note that the minimal $\delta$-cover of $\emptyset$ is an empty cover, thus the sum of its diameters is zero.
 	Ergo $\hm^s(\emptyset)=\lim\limits_{\delta\rightarrow 0} \hm^s_\delta(\emptyset)=\lim\limits_{\delta\rightarrow 0} 0 =0$.
 
-	Let $A,B\subseteq\RR^n$ such that $A\cap B=\emptyset$.
-	Since $A$ and $B$ are disjoint
-
-	% TODO: Prove it.
+	Let $\set{F_i}_{i\in I}$ be a countable collection of subsets of $\RR^n$.
+	For each $i\in I$, let $\mathcal{U}\in C_\delta(F_i)$.
+	Then $\mathcal{W}=\cup_{i\in I} \mathcal{U_i}\in C_\delta(\cup_{i\in I} F_i)$ for any combination of covers of the individual sets.
+	Thus,
+	\[
+		\hm^s_\delta
+		= \inf_{\mathcal{W}\in C_\delta(\cup F_i)} \sum_{W\in\mathcal{W}}{(\diam W)}^s
+		\leq \sum_{i\in I} \inf_{\mathcal{U}\in C_\delta(F_i)}\sum_{U\in\mathcal{U}} {(\diam U)}^s
+		=\sum_{i\in I} \hm^s_\delta(F_i)
+	\]
+	and by limit laws, $\hm^s(\cup F_i)\leq \sum_{i\in I} \hm^s(F_i)$.
+	% TODO: Reverse the inequality
 \end{proof}
 
-It should be noted that if $n=0$, $\hm^s$ is exactly the counting measure, and that if $n$ is a natural number then $\hm^s$ is the Lesbesque measure up to a constant multiple.
+It should be noted that if $s=0$, $\hm^s$ is exactly the counting measure, and that if $s$ is a natural number then $\hm^s$ is the Lesbesque measure up to a constant multiple.
+
+\begin{thm}
+	$\hm^0(F)=\card F$
+\end{thm}
+\begin{proof}
+	Suppose $F$ is countable and let $\delta>0$.
+	Denote $\mathcal{F}=\set{\set{x}}_{x\in F}$, then $\mathcal{F}$ is the minimal $\delta$-cover of $F$.
+	Thus,
+	\[
+		\hm^0_\delta(F)=\sum_{x\in F} {(\diam\set{x})}^0=\card F
+	\]
+	and $\hm(F)=|F|$.
+
+	If $F$ is uncountable then, there exists a countably infinite subset of $F$, which we denote $F_c$.
+	Since $\hm^0$ is a measure, $\hm^0(F_c)=\infty\leq\hm^0(F)$.
+	Thus, $\hm^0(F)=\infty$.
+\end{proof}
 
 \subsection{Properties of the Hausdorff Measure}
 
@@ -120,6 +145,23 @@ It should be noted that if $n=0$, $\hm^s$ is exactly the counting measure, and t
 	\[
 		\hm^s(f(F))=\lambda^s\hm^s(F).
 	\]
+\end{proof}
+
+\begin{proposition}
+	If we only consider $\delta$-covers consisting of closed sets when evaluating $\hm^s$ then the value remains unaltered.
+\end{proposition}
+
+\begin{proof}
+	% TODO: Prove it
+\end{proof}
+
+\subsection{Examples of the Hausdorff Measure}
+
+\begin{example}
+	Let $F=[0,1]$, then: if $s < 1$, $\hm^s(F)=\infty$; if $s=1$, $0 <\hm^s(F) <\infty$; and if $s>1$, $\hm^s(F)=0$.
+\end{example}
+\begin{proof}
+	% TODO: Prove
 \end{proof}
 
 \section{The Hausdorff Dimension}
@@ -337,4 +379,52 @@ We also have a theorem that relates the Hausdorff dimension to the Box-counting 
 	\]
 	Note that both of those sets are disjoint and open.
 	Furthermore, we can find these for any $x,y\in F$, thus $F$ must be totally disconnected.
+\end{proof}
+
+\subsection{Examples of the Hausdorff Dimension}
+
+\begin{example}
+	Let $F\subset\RR$ and let $f(x)=x^2$.
+	Show that $\dim_H F = \dim_H f(F)$.
+\end{example}
+
+\begin{proof}
+	Suppose $F$ is bounded, then $f$ is Lipschitz on $F$.
+	Thus,
+	\[
+		\dim_H f(F) \leq \dim_H F.
+	\]
+	Let $F^+=F\cap\RR^+$ and $F^-=F\cap\RR^-$.
+	Then $f:F^+\rightarrow f(F^+)$ and $f:F^-\rightarrow f(F^-)$ are invertible, and defined as $f^{-1}_+(x)=\sqrt{x}$ and $f^{-1}_-(x)=-\sqrt{x}$ respectively.
+	Choose some $\varepsilon>0$ such that $F\setminus(-\varepsilon,\varepsilon)\neq\emptyset$.
+	We know that $F^+\setminus[0,\varepsilon)$ or $F^-\setminus[0,\varepsilon)$ is nonempty. %chktex 9
+	Without loss of generality assume $F^+\setminus[0,\varepsilon)\neq\emptyset$. %chktex 9
+	Since $f^{-1}_+$ is continuously differentiable on $f(F^+\setminus[0,\varepsilon))$, $f^{-1}_+$ is Lipschitz. %chktex 9
+	Ergo,
+	\[
+		\dim_H F^+\setminus[0,\delta) \leq \dim_H f(F^+)\leq \dim_H f(F) % chktex 9
+	\]
+	for all $0 < \delta \leq \varepsilon$.
+	Taking the limit as $\delta\rightarrow 0$ yields,
+	\[
+		\dim_H F^+ \leq \dim_H f(F).
+	\]
+	A similar argument yields
+	\[
+		\dim_H F^- \leq \dim_H f(F).
+	\]
+	Thus by countable stability,
+	\[
+		\dim_H F = \max \set{\dim_H F^+, \dim_H F^-}\leq \dim_H f(F)
+	\]
+	and $\dim_H f(F)=\dim_H F$ when $F$ is bounded.
+
+	Suppose $F$ is unbounded, then $F$ can be covered by countably many open balls of radius $r>0$ with centers $x_i$ in $F$.
+	Denote, $F_i=B(x_i,r)\cap F$.
+	Note that $F=\cup_{i\in\NN} F_i$ and $f(F)=\cup_{i\in\NN} f(F_i)$.
+	Since $F_i$ is bounded, by the previous part, we know that $\dim_H F_i = \dim_H f(F_i)$ for each $i\in\NN$.
+	Thus, by countable stability,
+	\[
+		\dim_H F = \sup\limits_{i\in\NN} \dim_H F_i = \sup\limits_{i\in\NN} \dim_H f(F_i)=\dim_H f(F).
+	\]
 \end{proof}
