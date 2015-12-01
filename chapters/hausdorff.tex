@@ -388,11 +388,21 @@ We also have a theorem that relates the Hausdorff dimension to the Box-counting 
 
 \begin{lemma}\label{hd-lem3}
 	Let $F\subset\RR$ with $\hm^1(F) = 0$.
-	Then $F^C$ is dense in $\RR$
+	Then $F^c$ is dense in $\RR$
 \end{lemma}
 
 \begin{proof}
-
+	We need to show that $\overline{F^c}=\RR$ in order to show that $F^c$ is dense in $\RR$.
+	Equivalently, we will show that $\RR\setminus\overline{F^c}=\emptyset$.
+	Proceed via contradiction.
+	Assume $x\in\RR\setminus\overliee{F^c}$.
+	Thus, $x\notin\overline{F^c}$.
+	Therefore $x\in{\overline{F^c}}^c$, an open set.
+	Ergo, there exists an $r>0$ such that $B(x,r)\subseteq\overline{F^c}$.
+	Thus, $B(x,r)\cap\overline{F^c}=\emptyset$ and $B(x,r)\cap F^c=\emptyset$.
+	Ergo, $B(x,r)\cap F = B(x,r)$ and $B(x,r)\subseteq F$.
+	Therefore, $\hm^1(F)\geq\hm^1(B(x,r))=\lm^1(F)/\lm^1(B(0,1))=2r/2=r>0$.
+	This contradicts the assumption that $\hm^1(F)=0$ and thus, $\overline{F^c}=\RR$ and $F^c$ is dense in $\RR$.
 \end{proof}
 
 \begin{thm}
