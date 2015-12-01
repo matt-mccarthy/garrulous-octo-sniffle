@@ -152,7 +152,31 @@ It should be noted that if $s=0$, $\hm^s$ is exactly the counting measure, and t
 \end{proposition}
 
 \begin{proof}
-	% TODO: Prove it
+	Let $F\subseteq\RR^n$ and let $\mathcal{U}\in C_\delta(F)$.
+	Let $U\in\mathcal{U}$.
+	We know $\diam U\leq\diam \bar{U}$, the closure of $U$.
+	Let $\varepsilon > 0$ be given.
+	Let $x,y\in\bar{U}$.
+	Since $x,y$ are in the closure of $U$, then there exist sequences, $\set{x_n}_{n\in\NN}$ and $\set{y_n}_{n\in\NN}$ in $U$ such that $x_n\rightarrow x$ and $y_n\rightarrow y$.
+	Ergo, by convergence, there exists an $N_x\in\NN$ such that for all $n\geq N_x$, $|x_n-x|<\varepsilon/2$.
+	Similarly, we can find an $N_y$ such that $|y_n-y|<\varepsilon/2$ for all $n\geq N_y$.
+	Take $N=\max\set{N_x,N_y}$.
+	Then
+	\[
+		|x-y|\leq |x-x_N|+|x_N-y|\leq |x-x_N|+|x_N-y_N|+|y_N-y|\leq |x_N-y_N|+\varepsilon
+	\]
+	and $|x-y|\leq |x_N-y_N|$ since this holds for all $\varepsilon >0$.
+	Taking supremums yields,
+	\[
+		\diam \bar{U} =\sup_{x,y\in\bar{U}} |x-y|\leq \sup_{a,b\in U} |a-b|=\diam U
+	\]
+	and $\diam\bar{U}=\diam U$.
+	Therefore,
+	\[
+		\sum_{U\in\mathcal{U}}{(\diam U)}^s=\sum_{U\in\mathcal{U}}{(\diam\bar{U})}^s
+	\]
+	for all $\mathcal{U}\in C_\delta F$.
+	Ergo, $\hm^s_\delta(F)$ remains unchanged and thus $\hm^s(F)$ remains unchanged if we only consider closed covers.
 \end{proof}
 
 \subsection{Examples of the Hausdorff Measure}
@@ -161,8 +185,21 @@ It should be noted that if $s=0$, $\hm^s$ is exactly the counting measure, and t
 	Let $F=[0,1]$, then: if $s < 1$, $\hm^s(F)=\infty$; if $s=1$, $0 <\hm^s(F) <\infty$; and if $s>1$, $\hm^s(F)=0$.
 \end{example}
 \begin{proof}
-	% TODO: Prove
+	Consider the sequence $1/n$.
+	Since $\hm^s(F)=\lim\limits_{\delta\rightarrow0}\hm^s_\delta(F)$ exists,
+	any subsequence of $\set{\hm^s_\delta(F)}_{\delta>0}$ converges to the same limit.
+	Ergo, we will deal with $\set{\hm^s_{1/n}(F)}_{n=1}^\infty$ to simplify the proof.
+	We begin by noting that the minimal $1/n$ cover of $F$ is $\set{i/n,(i+1)/n}_{i=0}^{n-1}$.
+	Thus,
+	\[
+		\hm^s_{1/n}=\sum_{i=0}^{n-1}\frac{1}{n^s}=\frac{n}{n^s}=n^{1-s}.
+	\]
+	If $s < 1$, then $\hm^s_{1/n}\rightarrow\infty$.
+	If $s > 1$, then $\hm^s_{1/n}\rightarrow 0$.
+	However, if $s=1$, $\hm^s_{1/n}=n^{1-1}=1\rightarrow 1$.
 \end{proof}
+
+This critical value of $s=1$ is called the Hausdorff dimension of $F$.
 
 \section{The Hausdorff Dimension}
 
@@ -466,5 +503,19 @@ We also have a theorem that relates the Hausdorff dimension to the Box-counting 
 	Then $\dim_H F=\ln 9/\ln 10$.
 \end{example}
 \begin{proof}
-	% TODO: Prove it
+	Define $F_i=[i/10,(i+1)/10]\cap F$.
+	Then, $F=\cup_{i=0}^9 F_i$, the collection of $F_i$'s is mutually disjoint, $F_5=\emptyset$, and all other $F_i$'s are similar to $F$ with $\lambda=1/10$.
+	Thus,
+	\[
+		\hm^s(F)=\sum_{i=0}^9 \hm^s(F_i)=\frac{9}{10^s}\hm^s(F).
+	\]
+	Assuming $0 < \hm^s(F) < \infty$ at the critical $s$, then we have
+	\[
+		10^s=9
+	\]
+	and
+	\[
+		s=\frac{\ln9}{\ln10}.
+	\]
+	Thus $\dim_H F=\ln 9 /\ln 10$.
 \end{proof}
