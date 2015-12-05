@@ -67,7 +67,7 @@ In turn, this leads us to the definition of the $s$-dimensional Hausdorff measur
 	% TODO: Reverse the inequality
 \end{proof}
 
-It should be noted that if $s=0$, $\hm^s$ is exactly the counting measure, and that if $s$ is a natural number then $\hm^s$ is the Lesbesque measure up to a constant multiple.
+It should be noted that if $s=0$, $\hm^s$ is exactly the counting measure, and that if $s$ is a natural number then $\hm^s$ is the Lesbesgue measure up to a constant multiple.
 
 \begin{thm}
 	$\hm^0(F)=\card F$
@@ -86,6 +86,100 @@ It should be noted that if $s=0$, $\hm^s$ is exactly the counting measure, and t
 	Thus, $\hm^0(F)=\infty$.
 \end{proof}
 
+\subsection{The Hausdorff and Lesbesgue Measures}
+
+To begin, we find the volume of an $n$-dimensional hyper-sphere of radius $r$.
+
+\subsubsection{The Volume of an $n$-dimensional Hyper-Sphere of Radius $r$}
+
+Let $V_n(F)$ denote the $n$-dimensional volume of $F\subseteq\RR^n$, a Borel set.
+Furthermore, $V_n(F)=\lm^n(F)$, the $n$-dimensional Lesbesgue measure of $F$.
+Let $B_n(r)$ represent the $n$-dimensional open ball of radius $r$.
+Furthermore, we define $w_n=\int_{0}^{\pi/2}\cos^n\theta d\theta$ the Wallis integral.
+Lastly, we have the following recurrence for $V_n(B_n(r))$,
+\begin{equation}\label{reccing-vol}
+	V_n(B_n(r)) = 2\int_{0}^r V_{n-1}(B_{n-1})(\sqrt{r^2-\alpha^2})d\alpha
+\end{equation}
+
+Let $r>0$ be given.
+Consider $V_1(B_1(r))$.
+\[
+	V_1(B_1(r)) = \int_{-r}^r dx = 2r = 2r\int_0^{\pi/2}\cos\theta d\theta=2^1r^1w_1
+\]
+Consider $V_2(B_2(r))$.
+\begin{align*}
+	V_2(B_2(r)) &= 2\int_{0}^r V_1(B_1(\sqrt{r^2-y^2})) dy\\
+	&= 2\int_{0}^r 2\sqrt{r^2-y^2} w_1 dy\\
+	&= 2^2 w_1\int_{0}^r \sqrt{r^2-y^2} dy
+\end{align*}
+If we let $y=r\sin\theta$ then $dy=r\cos\theta d\theta$, then
+\begin{align*}
+	V_2(B_2(r))&=2^2 w_1 \int_0^{\pi/2}\sqrt{r^2-r^2\sin^2\theta}r\cos\theta d\theta\\
+	&= 2^2 r w_1 \int_0^{\pi/2}r\cos\theta\cos\theta d\theta\\
+	&= 2^2 r^2 w_1 \int_0^{\pi/2}r\cos^2\theta d\theta\\
+	&= 2^2 r^2 w_1 w_2.
+\end{align*}
+We can begin to see a pattern unfolding and thus we can conjecture that the following proposition holds.
+\begin{proposition}\label{vol-wallis-form}
+	For $r>0$, $V_n(B_n(r)) = 2^n r^n \prod_{j=1}^n w_j$.
+\end{proposition}
+\begin{proof}
+	We know that $V_1(B_1(r))=2^1r^1w_1$.
+	Assume that for all $k \leq n$, $V_k(B_k(r))=2^k r^k \prod_{j=1}^k w_j$.
+	Consider $V_{n+1}(B_{n+1}(r))$, then by \autoref{reccing-vol}
+	\begin{align*}
+		V_{n+1}(B_{n+1}(r)) &= 2\int_{0}^r V_{n}(B_{n})(\sqrt{r^2-\alpha^2})d\alpha\\
+		&= 2\int_{0}^r 2^n {\paren{\sqrt{r^2-\alpha^2}}}^n \prod_{j=1}^n w_j d\alpha\\
+		&=2^{n+1}\prod_{j=1}^n w_j \int_{0}^r {\paren{\sqrt{r^2-\alpha^2}}}^n d\alpha.
+	\end{align*}
+	If we let $\alpha = r\sin\theta$, then $d\alpha = r\cos\theta d\theta$, then
+	\begin{align*}
+		V_{n+1}(B_{n+1}(r)) &= 2^{n+1}\prod_{j=1}^n w_j \int_{0}^{\pi/2} {\paren{\sqrt{r^2-r^2\sin^2\theta}}}^n r\cos\theta d\theta\\
+		&=2^{n+1} r\prod_{j=1}^n w_j\int_{0}^{\pi/2}r^n \cos^{n+1}\theta d\theta\\
+		&=2^{n+1} r^{n+1}\prod_{j=1}^{n+1} w_j.
+	\end{align*}
+\end{proof}
+This form gives us a nicer recurrence relation as well.
+\begin{corollary}\label{vol-nice-rec}
+	For $r>0$, $V_{n+1}(B_{n+1}(r))=2rw_{n+1}V_{n}(B_{n}(r))$.
+\end{corollary}
+Using the form in terms of the Wallis integral, we can find a closed form for the volume of an $n$-dimensional hyper-sphere of radius $r>0$.
+\begin{thm}
+	For $r>0$,
+	\[
+		V_n(B_n(r)) =
+		\begin{cases}
+			\frac{r^{2k}\pi^k}{k!} & n=2k\\
+			\frac{2^{2k+1}r^{2k+1}\pi^k (k!)}{(2k+1)!} & n=2k+1
+		\end{cases}.
+	\]
+\end{thm}
+\begin{proof}
+	We know that the Wallis integral equal to
+	\[
+		w_k =
+		\begin{cases}
+			\frac{(2j)!}{2^{2j}(j!)^2}\cdot \frac{\pi}{2} & k=2j\\
+			\frac{2^{2j}(j!)^2}{(2j+1)!} & k=2j+1
+		\end{cases}.
+	\]
+	Consider $n = 2k$.
+	Then by Proposition\autoref{vol-wallis-form},
+	\begin{align*}
+		V_{2k}(B_{2k}(r))&=2^{2k} r^{2k} \prod_{j=1}^{2k} w_j\\
+		&=2^{2k} r^{2k} \prod_{j=1}^{k} w_{2j}w_{2j-1}\\
+		&=2^{2k} r^{2k} \prod_{j=1}^{k} \frac{\pi}{2}\frac{(2j)!}{2^{2j}(j!)^2}\frac{2^{2j}(j!)^2}{(2j+1)!}\\
+		&=2^{2k} r^{2k}\prod_{j=1}^{k}\frac{\pi}{2^2 j}\\
+		&=\frac{2^{2k} r^{2k} \pi^k}{2^{2k}}\prod_{j=1}^k\frac{1}{j}\\
+		&=\frac{r^{2k} \pi^k}{k!}.
+	\end{align*}
+	If we use Corollary\autoref{vol-nice-rec}, then
+	\begin{align*}
+		V_{2k+1}(B_{2k+1}(r))&=2rw_{2k+1}V_{2k}(B_{2k}(r))\\
+		&=2r\frac{r^{2k} \pi^k}{k!}\frac{2^{2k}(k!)^2}{(2k+1)!}\\
+		&=\frac{2^{2k+1}r^{2k+1}\pi^k(k!)}{(2k+1)!}.
+	\end{align*}
+\end{proof}
 \subsection{Properties of the Hausdorff Measure}
 
 \begin{thm}\label{hm-holder}
@@ -395,7 +489,7 @@ We also have a theorem that relates the Hausdorff dimension to the Box-counting 
 	We need to show that $\overline{F^c}=\RR$ in order to show that $F^c$ is dense in $\RR$.
 	Equivalently, we will show that $\RR\setminus\overline{F^c}=\emptyset$.
 	Proceed via contradiction.
-	Assume $x\in\RR\setminus\overliee{F^c}$.
+	Assume $x\in\RR\setminus\overline{F^c}$.
 	Thus, $x\notin\overline{F^c}$.
 	Therefore $x\in{\overline{F^c}}^c$, an open set.
 	Ergo, there exists an $r>0$ such that $B(x,r)\subseteq\overline{F^c}$.
