@@ -143,14 +143,36 @@ This form gives us a nicer recurrence relation as well.
 \begin{corollary}\label{vol-nice-rec}
 	For $r>0$, $V_{n+1}(B_{n+1}(r))=2rw_{n+1}V_{n}(B_{n}(r))$.
 \end{corollary}
+\begin{corollary}
+	Define $a_n:=V_n(B_n(1))$, then $V_n(B_n(r))=a_nr^n$.
+\end{corollary}
+\begin{proof}
+	By Proposition\autoref{vol-wallis-form}, we know that
+	\[
+		a_n = 2^n \prod_{j=1}^n w_j.
+	\]
+	Thus,
+	\[
+		V_n(B_n(r)) = \paren{2^n \prod_{j=1}^n w_j} r^n =a_n r^n.
+	\]
+\end{proof}
+Furthermore, we may (and by ``may'' I mean ``will'') find it useful to know the volume of the ball of diameter one.
+\begin{corollary}
+	If we define $c_n := V_n(B_n(1/2))$ then, $c_n = a_n/2^n$.
+\end{corollary}
+\begin{proof}
+	By the previous corollary
+	\[
+		c_n = a_n \paren{\frac{1}{2}}^n=\frac{a_n}{2^n}.
+	\]
+\end{proof}
 Using the form in terms of the Wallis integral, we can find a closed form for the volume of an $n$-dimensional hyper-sphere of radius $r>0$.
 \begin{thm}
-	For $r>0$,
 	\[
-		V_n(B_n(r)) =
+		a_n =
 		\begin{cases}
-			\frac{r^{2k}\pi^k}{k!} & n=2k\\
-			\frac{2^{2k+1}r^{2k+1}\pi^k (k!)}{(2k+1)!} & n=2k+1
+			\frac{\pi^k}{k!} & n=2k\\
+			\frac{2^{2k+1}\pi^k (k!)}{(2k+1)!} & n=2k+1
 		\end{cases}.
 	\]
 \end{thm}
@@ -166,20 +188,53 @@ Using the form in terms of the Wallis integral, we can find a closed form for th
 	Consider $n = 2k$.
 	Then by Proposition\autoref{vol-wallis-form},
 	\begin{align*}
-		V_{2k}(B_{2k}(r))&=2^{2k} r^{2k} \prod_{j=1}^{2k} w_j\\
-		&=2^{2k} r^{2k} \prod_{j=1}^{k} w_{2j}w_{2j-1}\\
-		&=2^{2k} r^{2k} \prod_{j=1}^{k} \frac{\pi}{2}\frac{(2j)!}{2^{2j}(j!)^2}\frac{2^{2j}(j!)^2}{(2j+1)!}\\
-		&=2^{2k} r^{2k}\prod_{j=1}^{k}\frac{\pi}{2^2 j}\\
-		&=\frac{2^{2k} r^{2k} \pi^k}{2^{2k}}\prod_{j=1}^k\frac{1}{j}\\
-		&=\frac{r^{2k} \pi^k}{k!}.
+		a_{2k}&=2^{2k} \prod_{j=1}^{2k} w_j\\
+		&=2^{2k} \prod_{j=1}^{k} w_{2j}w_{2j-1}\\
+		&=2^{2k} \prod_{j=1}^{k} \frac{\pi}{2}\frac{(2j)!}{2^{2j}(j!)^2}\frac{2^{2j}(j!)^2}{(2j+1)!}\\
+		&=2^{2k} \prod_{j=1}^{k}\frac{\pi}{2^2 j}\\
+		&=\frac{2^{2k} \pi^k}{2^{2k}}\prod_{j=1}^k\frac{1}{j}\\
+		&=\frac{\pi^k}{k!}.
 	\end{align*}
 	If we use Corollary\autoref{vol-nice-rec}, then
 	\begin{align*}
-		V_{2k+1}(B_{2k+1}(r))&=2rw_{2k+1}V_{2k}(B_{2k}(r))\\
-		&=2r\frac{r^{2k} \pi^k}{k!}\frac{2^{2k}(k!)^2}{(2k+1)!}\\
-		&=\frac{2^{2k+1}r^{2k+1}\pi^k(k!)}{(2k+1)!}.
+		a_{2k+1}&=2w_{2k+1}a_{2k}\\
+		&=2\frac{\pi^k}{k!}\frac{2^{2k}(k!)^2}{(2k+1)!}\\
+		&=\frac{2^{2k+1}\pi^k(k!)}{(2k+1)!}.
 	\end{align*}
 \end{proof}
+
+\subsubsection{The Relation}
+
+\begin{thm}[Isodiametric Inequality]
+	For a convex body $F$ in $\RR^n$,
+	\[
+		\frac{V_n(F)}{(\diam F)^n} \leq \frac{a_n}{(\diam B_n(1))^n}=\frac{a_n}{2^n}=c_n.
+	\]
+\end{thm}
+
+\begin{thm}
+	For a convex body $F$ in $\RR^n$,
+	\[
+		\frac{V_n(F)}{c_n} = \hm^n(F).
+	\]
+\end{thm}
+\begin{proof}
+	Consider $\hm^n(F)$.
+	Then, $\hm^n (F) = \lim\limits_{\delta\rightarrow0} \hm^n_\delta (F)$.
+	Furthermore, we know that $\hm^n_\delta(F)$ is monotone decreasing.
+	Thus, by monotone convergence theorem, $\hm^n(F)=\inf_{\delta>0} \hm^n_\delta(F)$.
+	Therefore it will suffice to show that $V_n(F)/c_n = \inf_{\delta>0} \hm^n_\delta(F)$.
+
+	Consider our isodiametric inequality for $F$.
+	\[
+		\frac{V_n(F)}{(\diam F)^n} \leq c_n
+	\]
+	Thus,
+	\[
+		V_n(F) \leq c_n(\diam F)^n.
+	\]
+\end{proof}
+
 \subsection{Properties of the Hausdorff Measure}
 
 \begin{thm}\label{hm-holder}
