@@ -166,6 +166,10 @@ Furthermore, we may (and by ``may'' I mean ``will'') find it useful to know the 
 		c_n = a_n \paren{\frac{1}{2}}^n=\frac{a_n}{2^n}.
 	\]
 \end{proof}
+Moreover, the volume of a ball in terms of its diameter is
+\[
+	c_n d^n.
+\]
 Using the form in terms of the Wallis integral, we can find a closed form for the volume of an $n$-dimensional hyper-sphere of radius $r>0$.
 \begin{thm}
 	\[
@@ -232,6 +236,58 @@ Using the form in terms of the Wallis integral, we can find a closed form for th
 	Thus,
 	\[
 		V_n(F) \leq c_n(\diam F)^n.
+	\]
+	Furthermore, $V_n(F)=\lm^n(F)$.
+	Let $\delta>0$ and $\mathcal{U}\in C_\delta(F)$.
+	Therefore,
+	\[
+		\lm^n(F) \leq \sum_{U\in\mathcal{U}} \lm^n(U) \leq c_n\sum (\diam U)^n
+	\]
+	Taking the infinimum of both sides yields,
+	\[
+		\lm^n(F)\leq c_n\hm^n_\delta(F)
+	\]
+	for all $\delta>0$.
+	Therefore, taking the limit as $\delta\rightarrow0$ yields
+	\[
+		\lm^n(F)\leq c_n\hm^n(F).
+	\]
+
+	Let $\varepsilon>0$ be given.
+	Therefore, we can find a disjoint cover of cubes with side length at most $l>0$ $\set{C_k}_{k\in K}$ where $K$ is countable such that $\lm^n(\cup C_k) -\lm^n(F) \leq \varepsilon$.
+	Moreover $\lm^n(C_k) = (\diam C_k / \sqrt{n})^n$.
+	Therefore,
+	\[
+		\paren{\frac{1}{\sqrt{n}}}^n \sum (\diam C_k)^n \leq \lm^n(F) + \varepsilon
+	\]
+	and taking the infinimum yields,
+	\[
+		\paren{\frac{1}{\sqrt{n}}}^n \sum \hm^n_l(F) \leq \lm^n(F) + \varepsilon
+	\]
+	for all $l,\varepsilon > 0$.
+	Thus,
+	\[
+		\paren{\frac{1}{\sqrt{n}}}^n \sum \hm^n(F) \leq \lm^n(F).
+	\]
+
+	We know by the Vitali Covering principle that there exists a disjoint family of closed balls, $\set{\set{B_j^k}_{j\in J_k} | J_k\subseteq\NN}_{j\in J}$ such that $\hm^n(C_k\setminus \cup B_j^k)=0$ for all $j\in J$ and $\cup B_j^k \subseteq C_k$.
+	Therefore $\hm^n(C_k) = \hm^n(\cup B_j^k)$, by properties of measures.
+	Thus,
+	\[
+		\lm^(F) + \varepsilon \geq \lm^n(\cup C_k) \geq \lm^n(\cup_{j,k} B_j^k)
+	\]
+	and thus
+	\[
+		\lm^(F) + \varepsilon \geq c_n \sum (\diam B_j^k)\geq c_n\hm^n(F)
+	\]
+	since $\set{B_j^k}_{j,k}$ is an $l$-cover of $F$ for all $\varepsilon >0$.
+	Ergo,
+	\[
+		\lm^(F) \geq  c_n\hm^n(F)
+	\]
+	and
+	\[
+		\lm^(F) =  c_n\hm^n(F).
 	\]
 \end{proof}
 
