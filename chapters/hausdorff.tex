@@ -255,39 +255,48 @@ Using the form in terms of the Wallis integral, we can find a closed form for th
 
 	Let $\varepsilon>0$ be given.
 	Therefore, we can find a disjoint cover of cubes with side length at most $l>0$ $\set{C_k}_{k\in K}$ where $K$ is countable such that $\lm^n(\cup C_k) -\lm^n(F) \leq \varepsilon$.
-	Moreover $\lm^n(C_k) = (\diam C_k / \sqrt{n})^n$.
-	Therefore,
-	\[
-		\paren{\frac{1}{\sqrt{n}}}^n \sum (\diam C_k)^n \leq \lm^n(F) + \varepsilon
-	\]
-	and taking the infinimum yields,
-	\[
-		\paren{\frac{1}{\sqrt{n}}}^n \sum \hm^n_l(F) \leq \lm^n(F) + \varepsilon
-	\]
-	for all $l,\varepsilon > 0$.
-	Thus,
-	\[
-		\paren{\frac{1}{\sqrt{n}}}^n \sum \hm^n(F) \leq \lm^n(F).
-	\]
+	% Moreover $\lm^n(C_k) = (\diam C_k / \sqrt{n})^n$.
+	% Therefore,
+	% \[
+	% 	\paren{\frac{1}{\sqrt{n}}}^n \sum (\diam C_k)^n \leq \lm^n(F) + \varepsilon
+	% \]
+	% and taking the infinimum yields,
+	% \[
+	% 	\paren{\frac{1}{\sqrt{n}}}^n \sum \hm^n_l(F) \leq \lm^n(F) + \varepsilon
+	% \]
+	% for all $l,\varepsilon > 0$.
+	% Thus,
+	% \[
+	% 	\paren{\frac{1}{\sqrt{n}}}^n \sum \hm^n(F) \leq \lm^n(F).
+	% \]
 
 	We know by the Vitali Covering principle that there exists a disjoint family of closed balls, $\set{\set{B_j^k}_{j\in J_k} | J_k\subseteq\NN}_{j\in J}$ such that $\hm^n(C_k\setminus \cup B_j^k)=0$ for all $j\in J$ and $\cup B_j^k \subseteq C_k$.
 	Therefore $\hm^n(C_k) = \hm^n(\cup B_j^k)$, by properties of measures.
 	Thus,
 	\[
-		\lm^(F) + \varepsilon \geq \lm^n(\cup C_k) \geq \lm^n(\cup_{j,k} B_j^k)
+		\lm^n(F) + \varepsilon \geq \lm^n(\cup C_k) \geq \lm^n(\cup_{j,k} B_j^k)
 	\]
 	and thus
 	\[
-		\lm^(F) + \varepsilon \geq c_n \sum (\diam B_j^k)\geq c_n\hm^n(F)
+		\lm^n(F) + \varepsilon \geq c_n \sum (\diam B_j^k)^n\geq c_n\hm^n(\cup B_j^k)
 	\]
-	since $\set{B_j^k}_{j,k}$ is an $l$-cover of $F$ for all $\varepsilon >0$.
+	since $\set{B_j^k}_{j,k}$ is an $l/\sqrt{n}$-cover of itself.
+	Moreover, by construction of $\set{B_j^k}$,
+	\[
+		\lm^n(F) + \varepsilon \geq c_n\hm^n(\cup B_j^k)=c_n\hm^n(\cup C_k)
+	\]
+	and by monotonicity
+	\[
+		\lm^n(F) + \varepsilon \geq c_n \hm^n(F)
+	\]
+	for all $\varepsilon > 0$.
 	Ergo,
 	\[
-		\lm^(F) \geq  c_n\hm^n(F)
+		\lm^n(F) \geq  c_n\hm^n(F)
 	\]
 	and
 	\[
-		\lm^(F) =  c_n\hm^n(F).
+		\lm^n(F) =  c_n\hm^n(F).
 	\]
 \end{proof}
 
